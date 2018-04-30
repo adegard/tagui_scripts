@@ -1,0 +1,35 @@
+//crea annuncio kijiji
+
+https://www.kijiji.it/pubblica-annuncio?cat=436338688
+
+//tipo offerta di lavoro
+select category-l2 as 436273152
+
+//citta
+enter .post-ad-city.required.defaultvisible .text-input as  [clear] 
+enter .post-ad-city.required.defaultvisible .text-input as Milano
+
+enter //*[@id="syi-form"]/div[2]/label[1]/input as  CERCO BADANTE CONVIVENTE
+
+select jobs-offers-type as 15
+select jobs-offers-j_type as 2
+
+enter textarea as Stiamo cercando una badante fissa con certificato oss possibilmente. Dovrà assistere per una persona anziana e accudire la casa e la persona preparare i pasti a Cinisello, deve essere attenta esperta curare la casa, anziana ha piccoli problemi ma è vigile presente in quasi tutto autosufficiente. Dovrà prendere servizio da Maggio. Per candidarsi: Utilizzare il link che troverà sotto all annuncio. Grazie.
+
+//tipo azienda
+click //*[@id="syi-form"]/div[3]/div/fieldset/label[2]/span
+
+enter email as h89ef@b2bx.net
+enter nickname as paolo
+
+//inserire sito
+enter attr_url as https://www.badante-noproblem.com/plus/CERCO-BADANTE-CONVIVENTE.html
+
+//click post-ad-preview
+click post-ad-publish
+
+//wait 3
+
+snap page to kijiji_crea.png
+
+
