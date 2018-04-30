@@ -1,0 +1,38 @@
+https://www.kijiji.it/offerte-di-lavoro/cerco-lavoro-servizi/badante/?entryPoint=sb
+
+	element_identifier = '#search-result > li:nth-child(INDEX) > div > h4'
+
+	
+for i from 3 to 9
+{
+
+	URLSelector = element_identifier.replace("INDEX", i);
+
+
+	//click on selector:
+	//echo 'Selector on: ' + '#search-result > li:nth-child(' + i + ') > div > h4'
+	
+	
+	//casper.then(function() {this.click('#search-result > li:nth-child(' + i + ') > div > h4');  });
+		
+	click '+URLSelector+'
+	
+	wait 1
+	
+	enter name as  [clear] 
+	enter name as Paolo 
+	enter #reply-form > fieldset:nth-child(2) > input as  [clear] 
+	enter #reply-form > fieldset:nth-child(2) > input as paes8@ethersportz.info 
+
+	enter message as Salve, cerchiamo badanti conviventi (fisse), abbiamo tante offerte di lavoro da proporti. Per candidarsi basta registrarsi su badante-noproblem.com il sito è gratuito. Utilizziamo il contratto nazionale, vai su badante-noproblem Grazie, cordiali saluti 
+
+	click .reply-form.box__content .reply-form__form-control.checkbox:nth-child(5) .checkbox__control
+	click .reply-form.box__content .reply-form__form-control.checkbox:nth-child(6) .checkbox__control
+
+	click #reply-form > footer > input
+	wait 3
+	snap page
+	
+	https://www.kijiji.it/offerte-di-lavoro/cerco-lavoro-servizi/badante/?entryPoint=sb
+	wait 2
+}

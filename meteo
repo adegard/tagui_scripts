@@ -1,0 +1,3 @@
+http://www.meteolive.it/previsione-meteo/italia/Lombardia/Milano/1/
+read //*[@id="box-previsioni-content"]/table/tbody/tr[4]/td[3] to prev
+echo "previzioni domani :" prev

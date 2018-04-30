@@ -1,0 +1,11 @@
+
+
+
+http://www.ilsole24ore.com/finanza-e-mercati/in-primo-piano.shtml
+
+//variazioni
+print //*[@id="s_sidebar"]/div[3]/ul
+
+
+//ultima notizia
+print //*[@id="s_sidebar"]/div[5]/div/ul/li[1]/article/h3/a
