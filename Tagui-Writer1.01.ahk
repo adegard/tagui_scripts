@@ -164,19 +164,19 @@ return
 
 WebScraping_Click:
 Store:=ClipboardAll  ;****Store clipboard ****
-Clipboard:="click	***element***   //i.e. using variable: click '+element_identifier+' "
+Clipboard:="click	'***element***'   //i.e. using variable: click '+element_identifier+' "
 Gosub Paste_and_Restore_Stored_Clipboard
 return
 
 WebScraping_Click_Click:
 Store:=ClipboardAll  ;****Store clipboard ****
-Clipboard:="dclick	***element*** "
+Clipboard:="dclick	'***element***' "
 Gosub Paste_and_Restore_Stored_Clipboard
 return
 
 WebScraping_Click_Focus:
 Store:=ClipboardAll  ;****Store clipboard ****
-Clipboard:="hover ***element*** "
+Clipboard:="hover '***element***' "
 Gosub Paste_and_Restore_Stored_Clipboard
 return
 
