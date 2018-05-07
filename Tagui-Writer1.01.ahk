@@ -40,6 +40,8 @@ Menu,WebScraping_Click,Icon,move cursor to element, %A_windir%\system32\mmcndmgr
 
 ;*************Set***************** 
 Menu,WebScraping_set,Add,Enter text,          WebScraping_enter
+Menu,WebScraping_set,Add,Enter value from repository,          WebScraping_enterrepo
+
 Menu,WebScraping_set,Add,Choose dropdown option,          WebScraping_option
 Menu,WebScraping_set,Add,Press Enter key in element,          WebScraping_pressenter
 
@@ -183,7 +185,13 @@ return
 
 WebScraping_enter:
 Store:=ClipboardAll  ;****Store clipboard ****
-Clipboard:="enter ***element*** as ***text*** //note: [enter] = enter, [clear] = clear field"
+Clipboard:="enter ***element*** as ***text***"
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+
+WebScraping_enterrepo:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard:="enter ***element*** as 'text'"
 Gosub Paste_and_Restore_Stored_Clipboard
 return
 
