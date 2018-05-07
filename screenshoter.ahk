@@ -1,4 +1,4 @@
-﻿/*adapted from original:
+/*adapted from original:
  SilentScreenshooter v1.9
 
 https://github.com/Drugoy/Autohotkey-scripts-.ahk/edit/master/SilentScreenshotter/SilentScreenshotter(+upload).ahk
@@ -49,8 +49,12 @@ Global ptr := A_PtrSize ? "UPtr" : "UInt"
 targetToUpload := []
 RegRead, proxyEnable, HKCU, Software\Microsoft\Windows\CurrentVersion\Internet Settings, ProxyEnable	; Detect wheter proxy is used or not.
 If (proxyEnable)
+
 	RegRead, proxyServer, HKCU, Software\Microsoft\Windows\CurrentVersion\Internet Settings, ProxyServer	; Detect address of proxy.
-imgPath .= imgName "." imgExtension
+		
+		imgName := A_Now
+		imgPath := A_ScriptDir "\" imgName "." imgExtension
+		
 pToken := Gdip_Startup()
 
 If (%0%)	; Usually %0% contains the number of command line parameters, but when the user drag'n'drops files onto the script - each of the dropped file gets sent to script as a separate command line parameter, so %0% contains the number of dropped files.
@@ -128,6 +132,10 @@ PrintScreen:: ; Since we use the same hotkey trice, we have to distinguish the c
 		Gui, 1: Destroy	; Hide the rectangular before screenshotting the area
 		; Save a screenshot to a file.
 		pBitmap := Gdip_BitmapFromScreen((x1 < x2 ? x1 : x2) "|" (y1 < y2 ? y1 : y2) "|" (x1 < x2 ? x2 - x1 + 1 : x1 - x2 + 1) "|" (y1 < y2 ? y2 - y1 + 1 : y1 - y2 + 1))
+		
+		imgName := A_Now
+		imgPath := A_ScriptDir "\" imgName "." imgExtension
+
 		Gdip_SaveBitmapToFile(pBitmap, imgPath, jpgQuality)
 		While !(FileExist(imgPath))	; Wait until the file gets actually created (otherwise the script will execute the next part too fast).
 			Sleep, 25
