@@ -23,10 +23,6 @@ Menu, Tray, Add, Exit
 ;***********Pointer******************* 
 ;****************************** 
 Menu,WebScraping_Pointer,Add,Go to specified webpage, go_to_url
-;Menu,WebScraping_Pointer,Add,Get pointer to IE window, WebScraping_Pointer_wbGet
-;Menu,WebScraping_Pointer,Add,Get pointer to IE window with Title and URL, WebScraping_Pointer_Get_IE_Title_URL
-
-;Menu,WebScraping_Pointer,Icon,Get pointer to IE window, %A_WinDir%\system32\shell32.dll,92
 
 Menu,Webscraping, Add, Webpage, :WebScraping_Pointer
 Menu,Webscraping,Icon,Webpage, %A_WinDir%\system32\SHELL32.dll, 18 ; %A_WinDir%\system32\imageres.dll, 18
@@ -88,21 +84,6 @@ Menu,WebScraping_pro,Add,check condition and print result,    WebScraping_check
    Menu,WebScraping,Icon,Pro steps,     %A_WinDir%\system32\shell32.dll,72
 
    
-/*
-frame	frame name | subframe name if any	next step or block in frame/subframe
-popup	url keyword of popup window to look for	next step or block in popup window
-{ and }	use { to start block and } to end block (on new line)	define block of steps and code
-api	full url (including parameters) of api call	call api & save response to api_result
-run	OS shell command including parameters	run OS command & save to run_result
-dom	javascript code for document object model	run code in dom & save to dom_result
-js	javascript statements (skip auto-detection)	treat as JS code explicitly
-r	R statements for big data and machine learning	run R statements & save to r_result
-py	python code for big data and machine learning	run python code & save to py_result
-vision	custom visual automation commands	run custom sikuli commands
-timeout	time in seconds before step errors out	change auto-wait timeout
-variable_name	= value (for text, put in quotes, use + to concat)	define variable variable_name
-// (on new line)	user comments (ignored during execution)	add user comments
-*/
 
 ;****************************** 
 ;***********Help******************* 
@@ -284,10 +265,6 @@ return
 
 Helpful_Links:
 Gui, Helpful:Destroy
-;~ Gui, Help:Add, Text,x10 y10, This program allows computers that share a mutual folder to share the clipboard.
-;~ Gui, Help:Add, Text,x10 y+15, After launching the script on both computers FROM THE SAME DIRECTORY, Copy/paste as you would normally however use the Windows Key INSTEAD of the Control Key.
-;~ Gui, Help:Add, Text,x10 y+15, To Copy hold down the windows key and press C (Alternatively you can press Alt and F1)
-;~ Gui, Help:Add, Text,x10 y+15, To Paste hold down the windows key and press V (Alternatively you can press Alt and F2)
 Gui, Helpful:Font,CBlue Underline
 Gui, Helpful:Add,Text,y+5 GWebsite_Jethrow, Jethrow Tutorial
 Gui, Helpful:Add,Text,y+10 GWebsite_Mickers, Mickers Tutorial
@@ -321,49 +298,11 @@ Gui,About:Add,Text,x10 y30,To activate menu, Hold down a control key and click t
 
 Gui,About:Font
 Gui,About:Font,CBlue Underline
-;Gui,About:Add,Text,y+10 GWebsite_LinkedIN, Joe Glines on LinkedIN
 hCurs:=DllCall("LoadCursor","UInt",NULL,"Int",32649,"UInt") ;IDC_HAND
 onMessage(0x200, "MsgHandler")
  Gui,About:Font
  Gui,About:Show,, About
 return
-/*
-Website_Jethrow:
-Run,http://www.autohotkey.com/board/topic/47052-basic-webpage-controls-with-javascript-com-tutorial
-  gosub GuiClose
-Return
-
-Website_Mickers:
-Run,http://www.autohotkey.com/board/topic/64563-basic-ahk-v11-com-tutorial-for-webpages/
-  gosub GuiClose
-Return
-
-Website_W3Schools:
-Run, http://www.w3schools.com/jsref/dom_obj_document.asp
-  gosub GuiClose
-Return
-
-Website_DottorO:
-Run, http://help.dottoro.com/ljhrmrfb.php
-  gosub GuiClose
-Return
-
-Website_LinkedIN:
-Run,http://www.linkedin.com/in/joeglines/
-Return
-
-Website_iWebBrowswer2:
-Run, http://www.autohotkey.com/board/topic/84258-iwb2-learner-iwebbrowser2/
-Return
-
-Website_YouTube:
-Run, https://youtu.be/UfqumFBUrwI
-Return
-
-Website_AHK_Tutorial:
-Run, http://ahkscript.org/boards/viewtopic.php?f=7&t=7822
-return
-*/
 Exit:
 ExitApp
 Return
