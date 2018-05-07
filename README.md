@@ -1,13 +1,11 @@
 # tagui_scripts
-TagUI samples - Browser Automation
+My TagUI script samples (Browser, RPA Automation) - TagUI AutoHotKey Helper 
 
-My Scripts for TagUI program: https://github.com/kelaberetiv/TagUI 
+TagUI setup: https://github.com/kelaberetiv/TagUI 
 
 
 
-************************************************
-
-TagUI commands Helper:  Tagui-Writer1.01.ahk
+<h1>TagUI commands Helper:  Tagui-Writer1.01.ahk </h1>
 
 
 - Install AutoHotKey
