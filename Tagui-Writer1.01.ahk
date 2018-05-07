@@ -41,6 +41,7 @@ Menu,WebScraping_Click,Icon,move cursor to element, %A_windir%\system32\mmcndmgr
 ;*************Set***************** 
 Menu,WebScraping_set,Add,Enter text,          WebScraping_enter
 Menu,WebScraping_set,Add,Choose dropdown option,          WebScraping_option
+Menu,WebScraping_set,Add,Press Enter key in element,          WebScraping_pressenter
 
 	Menu,WebScraping,Add,Set, :WebScraping_set ;*********** ******************* 
    Menu,WebScraping,Icon,Set,     %A_WinDir%\system32\shell32.dll,166
@@ -183,6 +184,12 @@ return
 WebScraping_enter:
 Store:=ClipboardAll  ;****Store clipboard ****
 Clipboard:="enter ***element*** as ***text*** //note: [enter] = enter, [clear] = clear field"
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+
+WebScraping_pressenter:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard:="enter ***element*** as [enter] "
 Gosub Paste_and_Restore_Stored_Clipboard
 return
 
