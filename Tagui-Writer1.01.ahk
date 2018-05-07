@@ -84,15 +84,6 @@ Menu,WebScraping_pro,Add,check condition and print result,    WebScraping_check
    Menu,WebScraping,Icon,Pro steps,     %A_WinDir%\system32\shell32.dll,72
 
    
-
-;****************************** 
-;***********Help******************* 
-;****************************** 
-Menu,WebScraping,Add, ;***********spacer******************* 
-  Menu,Webscraping,Add, Helpful links, Helpful_Links
-
-
- 
 ;******************************  
 ^Lbutton::Menu, WebScraping, Show  ; right mouse and windows
 ;~ Browser_Forward::Reload
@@ -262,31 +253,6 @@ Send, ^v ;Depending on your OS and Admin level- you might want to check this
 Sleep, 50
 Clipboard:=Store  ;Restore clipboard to original contents
 return
-
-Helpful_Links:
-Gui, Helpful:Destroy
-Gui, Helpful:Font,CBlue Underline
-Gui, Helpful:Add,Text,y+5 GWebsite_Jethrow, Jethrow Tutorial
-Gui, Helpful:Add,Text,y+10 GWebsite_Mickers, Mickers Tutorial
-;****************************** 
-Gui, Helpful:Font,Bold cBlack Norm 
-Gui, Helpful:Add,Text,y+20, Other Resources
-Gui, Helpful:Font,CBlue Underline
-Gui, Helpful:Add,Text,y+10 GWebsite_W3Schools, W3 Schools
-Gui, Helpful:Add,Text,y+10 GWebsite_DottorO, DottorO
-Gui, Helpful:Add,Text,y+10 GWebsite_iWebBrowswer2, iWeb2 Browser
-Gui, Helpful:Add,Text,y+10 GWebsite_YouTube, YouTube Demo
-Gui, Helpful:Add,Text,y+10 GWebsite_AHK_Tutorial, AHK tutorial
-
-
-hCurs:=DllCall("LoadCursor","UInt",NULL,"Int",32649,"UInt") ;IDC_HAND
-onMessage(0x200, "MsgHandler")
-
-Gui, Helpful:Show,w150 , Helpful links
-
-;~ run 
-return
-
 
 ;***********About me******************* 
 About:
