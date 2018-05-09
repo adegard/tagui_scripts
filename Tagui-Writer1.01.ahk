@@ -50,7 +50,6 @@ Menu,WebScraping_set,Add,Press Enter key in element,          WebScraping_presse
 
    ;*************Scrap***************** 
 Menu,WebScraping_get,Add,Read element text to variable,          WebScraping_read
-Menu,WebScraping_get,Add,Find element attribute(js),          WebScraping_attribute
 Menu,WebScraping_get,Add,Print element text to output,          WebScraping_print
 Menu,WebScraping_get,Add,Echo text/variables to output,          WebScraping_echo
 Menu,WebScraping_get,Add,Save screenshot to file,    		WebScraping_snap
@@ -89,13 +88,29 @@ Menu,WebScraping_pro,Add,check condition and print result,    WebScraping_check
 	Menu,WebScraping,Add,Pro steps, :WebScraping_pro ;*********** ******************* 
    Menu,WebScraping,Icon,Pro steps,     %A_WinDir%\system32\shell32.dll,72
 
-   
+    ;*************Javascript***************** 
+Menu,WebScraping_js,Add,Find element attribute,          WebScraping_attribute
+Menu,WebScraping_js,Add,Get list of element (dom),          WebScraping_domloop
+Menu,WebScraping_js,Add,Save dom result in file,          WebScraping_domsave
+	Menu,WebScraping,Add,Javascript, :WebScraping_js ;*********** ******************* 
+   Menu,WebScraping,Icon,Javascript,     %A_WinDir%\system32\setupapi.dll,13
+  
 ;******************************  
 ^Lbutton::Menu, WebScraping, Show  ; right mouse and windows
 ;~ Browser_Forward::Reload
 ;****************************** 
-
    
+WebScraping_domloop:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard:="dom id_list = ''; for (n=1;n<=10;n++) {id_list += document.querySelector('#c_16 > div:nth-child('+n+') > h3 > a').href + '\n'}; return id_list; echo dom_result"
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+
+WebScraping_domsave:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard:="var fs = require('fs'); fs.write('/tmp/urls.csv', dom_result + '\n', 'w');"
+Gosub Paste_and_Restore_Stored_Clipboard
+return
 
 WebScraping_receive:
 Store:=ClipboardAll  ;****Store clipboard ****
@@ -195,7 +210,7 @@ return
 
 WebScraping_enter:
 Store:=ClipboardAll  ;****Store clipboard ****
-Clipboard:="enter ***element*** as ***text***"
+Clipboard:="enter ***element*** as ***text*** (or variable without quotation marks)"
 Gosub Paste_and_Restore_Stored_Clipboard
 return
 
