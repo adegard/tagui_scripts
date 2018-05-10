@@ -56,8 +56,8 @@ Menu,WebScraping_get,Add,Save screenshot to file,    		WebScraping_snap
 Menu,WebScraping_get,Add,Snap page,    					WebScraping_snappage
 Menu,WebScraping_get,Add,Save webpage to pdf,   			 WebScraping_snap_pdf
 Menu,WebScraping_get,Add,Save basic html table to csv,    WebScraping_table
-
-
+Menu,WebScraping_get,Add,Count elements on page,    WebScraping_countel
+Menu,WebScraping_get,Add,Track time between events,    WebScraping_timer
 
 	Menu,WebScraping,Add,Scrap, :WebScraping_get ;*********** ******************* 
    Menu,WebScraping,Icon,Scrap,     %A_WinDir%\system32\shell32.dll,219
@@ -96,6 +96,9 @@ Menu,WebScraping_pro,Add,check condition and print result,    WebScraping_check
 	Menu,WebScraping,Add,Pro steps, :WebScraping_pro ;*********** ******************* 
    Menu,WebScraping,Icon,Pro steps,     %A_WinDir%\system32\shell32.dll,72
 
+   
+   
+   
     ;*************Javascript***************** 
 Menu,WebScraping_js,Add,Find element attribute,          WebScraping_attribute
 Menu,WebScraping_js,Add,Get list of element (dom),          WebScraping_domloop
@@ -108,6 +111,35 @@ Menu,WebScraping_js,Add,Save dom result in file,          WebScraping_domsave
 ;~ Browser_Forward::Reload
 ;****************************** 
    
+   
+WebScraping_timer:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard=
+(  Join`r`n
+// use timer() as a stopwatch to track elapsed time between calls
+start = timer()
+
+// ... some actions...
+
+// use timer() as a stopwatch to track elapsed time between calls
+time_taken = timer()
+echo 'time taken - ' time_taken ' seconds'
+)
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+
+   
+WebScraping_countel:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard=
+(  Join`r`n
+//specify same id, class name of all elements on the page...
+count_number = count('uh-tb-')
+echo 'count_number = ' count_number
+)
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+
 WebScraping_present:
 Store:=ClipboardAll  ;****Store clipboard ****
 Clipboard:="if present(***Selector***) {   ....  } "
@@ -136,13 +168,26 @@ return
   
 WebScraping_domloop:
 Store:=ClipboardAll  ;****Store clipboard ****
-Clipboard:="dom id_list = ''; for (n=1;n<=10;n++) {id_list += document.querySelector('#c_16 > div:nth-child('+n+') > h3 > a').href + '\n'}; return id_list; echo dom_result"
+Clipboard=
+(  Join`r`n
+// JavaScript can be used directly in the flow for more expressive and advanced automation
+// default execution context for JavaScript is local, to work on webpage dom, use dom step
+// following loop through directly in webpage dom to compile and return list of profile ids
+dom id_list = ""; for (n=1;n<=51;n++) {id_list += document.querySelector('.follow-list-item:nth-child('+n+') a').href + '\n'}; return id_list; 
+echo dom_result
+)
+
 Gosub Paste_and_Restore_Stored_Clipboard
 return
 
 WebScraping_domsave:
 Store:=ClipboardAll  ;****Store clipboard ****
-Clipboard:="var fs = require('fs'); fs.write('/tmp/urls.csv', dom_result + '\n', 'w');"
+Clipboard=
+(  Join`r`n
+// you can also use JavaScript to do post-processing and write to a file, or to a format directly usable by flow 6B
+var fs = require('fs'); fs.write("/tmp/urls.csv", dom_result + "\n", 'w');
+)
+
 Gosub Paste_and_Restore_Stored_Clipboard
 return
 
