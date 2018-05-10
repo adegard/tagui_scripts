@@ -13,7 +13,7 @@ TagUI setup: https://github.com/kelaberetiv/TagUI
 - save and launch https://github.com/adegard/tagui_scripts/blob/master/Tagui-Writer1.01.ahk
 - Ctrl+left Click to show Menu
 
-<img src="https://github.com/adegard/tagui_scripts/20180510123237.png"  align="center">
+<img src="https://raw.githubusercontent.com/adegard/tagui_scripts/master/20180510123237.png"  align="center">
 
 
 <h1>ScreenShoter:  screenshoter.ahk </h1>
