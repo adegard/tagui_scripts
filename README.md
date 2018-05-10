@@ -6,7 +6,7 @@ TagUI setup: https://github.com/kelaberetiv/TagUI
 
 
 <h1>TagUI commands Helper:  Tagui-Writer1.01.ahk (Beta)</h1>
-
+Command Helper, print in your code little snippets examples in TagUI language
 
 - Install AutoHotKey
 - Open Editor of your choice (Notepad+++ is great)
@@ -17,7 +17,7 @@ TagUI setup: https://github.com/kelaberetiv/TagUI
 
 
 <h1>ScreenShoter:  screenshoter.ahk </h1>
-
+Capture sreen shots for Visual automation (Tagui - Sikuli)  and save it directly in png file!
 
 - Install AutoHotKey
 - save and launch https://github.com/adegard/tagui_scripts/blob/master/screenshoter.ahk
