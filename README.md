@@ -1,7 +1,9 @@
 # tagui_scripts
 
 <h1>TagUI commands Helper:  Tagui-Writer1.01.ahk (Beta)</h1>
-Command Helper, print in your code little snippets examples in TagUI language
+
+# Why This 
+Easily print in your code little snippets (examples) in TagUI language
 
 <img src="https://raw.githubusercontent.com/adegard/tagui_scripts/master/20180510123237.png"  align="center">
 
