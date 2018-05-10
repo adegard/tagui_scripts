@@ -80,6 +80,14 @@ Menu,WebScraping_tagui,Add,Start another tagui flow,    WebScraping_run
 	Menu,WebScraping,Add,Start script, :WebScraping_tagui ;*********** ******************* 
    Menu,WebScraping,Icon,Start script,     %A_WinDir%\system32\shell32.dll,215
  
+    ;*************Conditions***************** 
+Menu,WebScraping_cond,Add,If text contain,          WebScraping_ifcontain
+Menu,WebScraping_cond,Add,If element present do action,          WebScraping_present
+Menu,WebScraping_cond,Add,Check element present return text,          WebScraping_checkpres
+Menu,WebScraping_cond,Add,Check number of elements return text,          WebScraping_checkcount
+	Menu,WebScraping,Add,Conditions, :WebScraping_cond ;*********** ******************* 
+   Menu,WebScraping,Icon,Conditions,     %A_WinDir%\system32\shell32.dll,145
+ 
    ;*************pro***************** 
 Menu,WebScraping_pro,Add,wait for some time,    WebScraping_wait
 Menu,WebScraping_pro,Add,enter live mode,    WebScraping_live
@@ -100,6 +108,32 @@ Menu,WebScraping_js,Add,Save dom result in file,          WebScraping_domsave
 ;~ Browser_Forward::Reload
 ;****************************** 
    
+WebScraping_present:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard:="if present(***Selector***) {   ....  } "
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+   
+WebScraping_ifcontain:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard:="if ****text variable(without quotation marks)*** contains 'text (with quotation marks)' "
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+
+WebScraping_checkpres:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard:="check present('search-buttons') | 'search button exists' | 'search button does not exist' "
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+
+WebScraping_checkcount:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard:="check count('uh-tb-') more than or equals to 6|'header menu items >= 6'|'header menu items < 6' "
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+
+
+  
 WebScraping_domloop:
 Store:=ClipboardAll  ;****Store clipboard ****
 Clipboard:="dom id_list = ''; for (n=1;n<=10;n++) {id_list += document.querySelector('#c_16 > div:nth-child('+n+') > h3 > a').href + '\n'}; return id_list; echo dom_result"
