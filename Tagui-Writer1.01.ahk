@@ -20,10 +20,10 @@ Menu, Tray, Add, Exit
 
 ;~ https://diymediahome.org/windows-icons-reference-list-with-details-locations-images/
 ;****************************** 
-;***********Pointer******************* 
+;***********Navigate Webpage******************* 
 ;****************************** 
 Menu,WebScraping_Pointer,Add,Go to specified webpage, go_to_url
-
+Menu,WebScraping_Pointer,Icon,Go to specified webpage, %A_windir%\system32\shell32.dll,18 
 Menu,Webscraping, Add, Webpage, :WebScraping_Pointer
 Menu,Webscraping,Icon,Webpage, %A_WinDir%\system32\SHELL32.dll, 18 ; %A_WinDir%\system32\imageres.dll, 18
 
@@ -31,8 +31,11 @@ Menu,Webscraping,Icon,Webpage, %A_WinDir%\system32\SHELL32.dll, 18 ; %A_WinDir%\
 ;***********Click******************* 
 ;****************************** 
 Menu,WebScraping_Click,Add,Click on Element,          WebScraping_Click
+Menu,WebScraping_Click,Icon,Click on Element, %A_windir%\system32\shell32.dll,100 
+Menu,WebScraping_Click,Add,Click on Text,          WebScraping_text
+Menu,WebScraping_Click,Icon,Click on Text, %A_windir%\system32\shell32.dll,75 
 Menu,WebScraping_Click,Add,move cursor to element,WebScraping_Click_Focus
-Menu,WebScraping_Click,Icon,move cursor to element, %A_windir%\system32\mmcndmgr.dll,101 ;%A_WinDir%\system32\wmploc.dll,28
+Menu,WebScraping_Click,Icon,move cursor to element, %A_windir%\system32\shell32.dll,101 
 
 	Menu,WebScraping,Add,Click, :WebScraping_Click ;*********** ******************* 
    Menu,WebScraping,Icon,Click,     %A_WinDir%\system32\mmcndmgr.dll,51
@@ -49,15 +52,23 @@ Menu,WebScraping_set,Add,Press Enter key in element,          WebScraping_presse
 
 
    ;*************Scrap***************** 
+Menu,WebScraping_get,Add,Check text presence,    					WebScraping_checktext
+Menu,WebScraping_get,Icon,Check text presence, %A_windir%\system32\shell32.dll,219 
 Menu,WebScraping_get,Add,Read element text to variable,          WebScraping_read
 Menu,WebScraping_get,Add,Print element text to output,          WebScraping_print
 Menu,WebScraping_get,Add,Echo text/variables to output,          WebScraping_echo
 Menu,WebScraping_get,Add,Save screenshot to file,    		WebScraping_snap
+Menu,WebScraping_get,Icon,Save screenshot to file, %A_windir%\system32\shell32.dll,140 
 Menu,WebScraping_get,Add,Snap page,    					WebScraping_snappage
+Menu,WebScraping_get,Icon,Snap page, %A_windir%\system32\shell32.dll,140 
 Menu,WebScraping_get,Add,Save webpage to pdf,   			 WebScraping_snap_pdf
+Menu,WebScraping_get,Icon,Save webpage to pdf, %A_windir%\system32\shell32.dll,76 
 Menu,WebScraping_get,Add,Save basic html table to csv,    WebScraping_table
+Menu,WebScraping_get,Icon,Save basic html table to csv, %A_windir%\system32\shell32.dll,115 
 Menu,WebScraping_get,Add,Count elements on page,    WebScraping_countel
+Menu,WebScraping_get,Icon,Count elements on page, %A_windir%\system32\shell32.dll,166 
 Menu,WebScraping_get,Add,Track time between events,    WebScraping_timer
+Menu,WebScraping_get,Icon,Track time between events, %A_windir%\system32\shell32.dll,240  
 
 	Menu,WebScraping,Add,Scrap, :WebScraping_get ;*********** ******************* 
    Menu,WebScraping,Icon,Scrap,     %A_WinDir%\system32\shell32.dll,219
@@ -75,10 +86,10 @@ Menu,WebScraping_file,Add,receive resource to file,    WebScraping_receive
    Menu,WebScraping,Icon,Save-Read File,     %A_WinDir%\system32\shell32.dll,71
  
    ;*************Start***************** 
-Menu,WebScraping_tagui,Add,Start another tagui flow,    WebScraping_run
- 
-	Menu,WebScraping,Add,Start script, :WebScraping_tagui ;*********** ******************* 
-   Menu,WebScraping,Icon,Start script,     %A_WinDir%\system32\shell32.dll,215
+Menu,WebScraping_tagui,Add,Run tagui flow,    WebScraping_run
+Menu,WebScraping_tagui,Icon,Run tagui flow, %A_windir%\system32\shell32.dll,215 
+	Menu,WebScraping,Add,Run script, :WebScraping_tagui ;*********** ******************* 
+   Menu,WebScraping,Icon,RUN script,     %A_WinDir%\system32\shell32.dll,215
  
     ;*************Conditions***************** 
 Menu,WebScraping_cond,Add,If text contain,          WebScraping_ifcontain
@@ -111,6 +122,29 @@ Menu,WebScraping_js,Add,Save dom result in file,          WebScraping_domsave
 ;~ Browser_Forward::Reload
 ;****************************** 
    
+   
+WebScraping_text:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard=
+(  Join`r`n
+//check before if page contain text
+check text() contains "text" | "page text contains this text" | "page text does NOT contain this text"
+//click on text (without special characters)
+click //a[text()="text"]
+wait 2
+)
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+  
+WebScraping_checktext:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard=
+(  Join`r`n
+//check if page contain text
+check text() contains "text" | "page text contains text" | "page text does not contain text"  
+)
+Gosub Paste_and_Restore_Stored_Clipboard
+return
    
 WebScraping_timer:
 Store:=ClipboardAll  ;****Store clipboard ****
@@ -187,7 +221,6 @@ Clipboard=
 // you can also use JavaScript to do post-processing and write to a file, or to a format directly usable by flow 6B
 var fs = require('fs'); fs.write("/tmp/urls.csv", dom_result + "\n", 'w');
 )
-
 Gosub Paste_and_Restore_Stored_Clipboard
 return
 
@@ -237,7 +270,27 @@ return
 
 WebScraping_run:
 Store:=ClipboardAll  ;****Store clipboard ****
-Clipboard:="tagui ***filename*** //note: relative or absolute path "
+Clipboard=
+(  Join`r`n
+tagui ***filename*** options(s) 
+//OPTION LIST:
+//headless	run on invisible Chrome web browser instead of default PhantomJS (first install Chrome)
+//chrome	run on visible Chrome web browser instead of invisible PhantomJS (first install Chrome)
+//firefox	run on visible Firefox web browser instead of invisible browser (first install Firefox)
+//upload	upload automation flow and result to hastebin.com (expires 30 days after last view)
+//report	web report for sharing of run results on webserver (default is only a text log file)
+//debug		show run-time backend messages from PhantomJS for detailed tracing and logging
+//quiet		run without output except for explicit output (echo / show / check / errors etc)
+//speed		skip 3-second delay between datatable iterations (and skip restarting of Chrome)
+//test		testing with check step test assertions for CI/CD integration (output XUnit XML file)
+//baseline	output execution log and relative-path output files to a separate baseline directory
+//input(s)	add your own parameter(s) to be used in your automation flow as variables p1 to p9
+//i.e. Command Line: tagui demo chrome apple orange banana
+//i.e. Script get inputs: 
+//echo "parameter 1 is - " p1
+//echo "parameter 2 is - " p2
+//echo "parameter 3 is - " p3
+)
 Gosub Paste_and_Restore_Stored_Clipboard
 return
 
@@ -270,7 +323,11 @@ return
 
 go_to_url:
 Store:=ClipboardAll  ;****Store clipboard ****
-Clipboard:="http://www.webpage.com/      //note: '+variable+' for variable "
+Clipboard=
+(  Join`r`n
+// just enter full url of webpage ('+variable+' for variable)
+https://www.webpage.com/ 
+)
 Gosub Paste_and_Restore_Stored_Clipboard
 return
 
