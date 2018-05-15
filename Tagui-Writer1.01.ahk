@@ -128,10 +128,9 @@ Store:=ClipboardAll  ;****Store clipboard ****
 Clipboard=
 (  Join`r`n
 //check before if page contain text
-check text() contains "text" | "page text contains this text" | "page text does NOT contain this text"
-//click on text (without special characters)
-click //a[text()="text"]
-wait 2
+check text() contains "Click here" | "page text contains this text" | "page text does NOT contain this text"
+//click on text 
+click //*[text()="Click here"]
 )
 Gosub Paste_and_Restore_Stored_Clipboard
 return
