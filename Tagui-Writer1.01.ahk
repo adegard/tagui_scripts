@@ -57,6 +57,10 @@ Menu,WebScraping_get,Icon,Check text presence, %A_windir%\system32\shell32.dll,2
 Menu,WebScraping_get,Add,Read element text to variable,          WebScraping_read
 Menu,WebScraping_get,Add,Print element text to output,          WebScraping_print
 Menu,WebScraping_get,Add,Echo text/variables to output,          WebScraping_echo
+Menu,WebScraping_get,Add,Echo url of webpage,          WebScraping_url
+Menu,WebScraping_get,Icon,Echo url of webpage, %A_windir%\system32\shell32.dll,18 
+Menu,WebScraping_get,Add,Echo text of webpage,          WebScraping_webtext
+Menu,WebScraping_get,Icon,Echo text of webpage, %A_windir%\system32\shell32.dll,18 
 Menu,WebScraping_get,Add,Save screenshot to file,    		WebScraping_snap
 Menu,WebScraping_get,Icon,Save screenshot to file, %A_windir%\system32\shell32.dll,140 
 Menu,WebScraping_get,Add,Snap page,    					WebScraping_snappage
@@ -67,6 +71,8 @@ Menu,WebScraping_get,Add,Save basic html table to csv,    WebScraping_table
 Menu,WebScraping_get,Icon,Save basic html table to csv, %A_windir%\system32\shell32.dll,115 
 Menu,WebScraping_get,Add,Count elements on page,    WebScraping_countel
 Menu,WebScraping_get,Icon,Count elements on page, %A_windir%\system32\shell32.dll,166 
+Menu,WebScraping_get,Add,Scrap elements of table (loop),    WebScraping_tableelements
+Menu,WebScraping_get,Icon,Scrap elements of table (loop), %A_windir%\system32\shell32.dll,166 
 Menu,WebScraping_get,Add,Track time between events,    WebScraping_timer
 Menu,WebScraping_get,Icon,Track time between events, %A_windir%\system32\shell32.dll,240  
 
@@ -103,6 +109,8 @@ Menu,WebScraping_cond,Add,Check number of elements return text,          WebScra
 Menu,WebScraping_pro,Add,wait for some time,    WebScraping_wait
 Menu,WebScraping_pro,Add,enter live mode,    WebScraping_live
 Menu,WebScraping_pro,Add,check condition and print result,    WebScraping_check
+Menu,WebScraping_pro,Add,Access to frame in webpage,    WebScraping_frame
+Menu,WebScraping_pro,Add,Access under Proxy,    WebScraping_proxy
 
 	Menu,WebScraping,Add,Pro steps, :WebScraping_pro ;*********** ******************* 
    Menu,WebScraping,Icon,Pro steps,     %A_WinDir%\system32\shell32.dll,72
@@ -122,6 +130,77 @@ Menu,WebScraping_js,Add,Save dom result in file,          WebScraping_domsave
 ;~ Browser_Forward::Reload
 ;****************************** 
    
+WebScraping_proxy:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard=
+(  Join`r`n
+//accessing the next URL under that proxy. 
+//The last 2 parameters are the username and password, if your proxy service provider requires credentials.
+phantom.setProxy('IP', 'port', 'manual', '', '');
+https://www.google.com/
+)
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+
+   
+WebScraping_frame:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard=
+(  Join`r`n
+// for frame step it is used to access webpage implemented as a frame within another webpage
+// the usage is similar to popup step, except that the parameter is the frame name
+// if there is a subframe within the mainframe, use frame mainframe | subframe
+frame framename
+{
+***do something***
+}
+)
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+
+   
+WebScraping_tableelements:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard=
+(  Join`r`n
+// go to another web page with a table to practice for loop
+https://github.com/tebelorg/TLE
+// for loop can be expressed in natural language or JavaScript
+for column from 1 to 6
+{
+// '+variable_name+' can be used where text is expected
+show (//table)[3]//td['+column+']
+}   
+)
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+
+   
+WebScraping_webtext:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard=
+(  Join`r`n
+//return text in command
+echo 'text: ' text()
+)
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+
+
+WebScraping_url:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard=
+(  Join`r`n
+//return url in command
+echo 'page url: ' url()  
+//you can use also:
+echo 'UPLOADED URL - ' this.getCurrentUrl() + '\n' 
+//append url in file
+write url() to urllist.txt
+)
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+
    
 WebScraping_text:
 Store:=ClipboardAll  ;****Store clipboard ****
@@ -309,7 +388,11 @@ return
 
 WebScraping_snap:
 Store:=ClipboardAll  ;****Store clipboard ****
-Clipboard:="snap ***element*** to ***filename (optional)*** //note: snap page = webpage) "
+Clipboard=
+(  Join`r`n
+//note: you can snap element or entire page 
+snap page to myscript.png 
+)
 Gosub Paste_and_Restore_Stored_Clipboard
 return
 
