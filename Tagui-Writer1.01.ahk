@@ -43,7 +43,7 @@ Menu,WebScraping_Click,Icon,move cursor to element, %A_windir%\system32\shell32.
 ;*************Set***************** 
 Menu,WebScraping_set,Add,Enter text,          WebScraping_enter
 Menu,WebScraping_set,Add,Enter value from repository,          WebScraping_enterrepo
-
+Menu,WebScraping_set,Add,Check a Checkbox,          WebScraping_checkmybox
 Menu,WebScraping_set,Add,Choose dropdown option,          WebScraping_option
 Menu,WebScraping_set,Add,Press Enter key in element,          WebScraping_pressenter
 
@@ -54,6 +54,9 @@ Menu,WebScraping_set,Add,Press Enter key in element,          WebScraping_presse
    ;*************Scrap***************** 
 Menu,WebScraping_get,Add,Check text presence,    					WebScraping_checktext
 Menu,WebScraping_get,Icon,Check text presence, %A_windir%\system32\shell32.dll,219 
+Menu,WebScraping_get,Add,Return if checkbox is checked,    					WebScraping_checkbox
+Menu,WebScraping_get,Add,Count items in dropdown select,    					WebScraping_dropdownitem
+Menu,WebScraping_get,Add,Getting attribute (like href) of elements,    			WebScraping_atribute
 Menu,WebScraping_get,Add,Read element text to variable,          WebScraping_read
 Menu,WebScraping_get,Add,Print element text to output,          WebScraping_print
 Menu,WebScraping_get,Add,Echo text/variables to output,          WebScraping_echo
@@ -99,17 +102,20 @@ Menu,WebScraping_tagui,Icon,Run tagui flow, %A_windir%\system32\shell32.dll,215
  
     ;*************Conditions***************** 
 Menu,WebScraping_cond,Add,If text contain,          WebScraping_ifcontain
+Menu,WebScraping_cond,Add,If value is more less,          WebScraping_if
 Menu,WebScraping_cond,Add,If element present do action,          WebScraping_present
 Menu,WebScraping_cond,Add,Check element present return text,          WebScraping_checkpres
 Menu,WebScraping_cond,Add,Check number of elements return text,          WebScraping_checkcount
-	Menu,WebScraping,Add,Conditions, :WebScraping_cond ;*********** ******************* 
-   Menu,WebScraping,Icon,Conditions,     %A_WinDir%\system32\shell32.dll,145
+Menu,WebScraping_cond,Add,loop for,          WebScraping_for
+	Menu,WebScraping,Add,Conditions/loop, :WebScraping_cond ;*********** ******************* 
+   Menu,WebScraping,Icon,Conditions/loop,     %A_WinDir%\system32\shell32.dll,145
  
    ;*************pro***************** 
 Menu,WebScraping_pro,Add,wait for some time,    WebScraping_wait
 Menu,WebScraping_pro,Add,enter live mode,    WebScraping_live
 Menu,WebScraping_pro,Add,check condition and print result,    WebScraping_check
 Menu,WebScraping_pro,Add,Access to frame in webpage,    WebScraping_frame
+Menu,WebScraping_pro,Add,Access to second browser tab,    WebScraping_popup
 Menu,WebScraping_pro,Add,Access under Proxy,    WebScraping_proxy
 
 	Menu,WebScraping,Add,Pro steps, :WebScraping_pro ;*********** ******************* 
@@ -122,6 +128,9 @@ Menu,WebScraping_pro,Add,Access under Proxy,    WebScraping_proxy
 Menu,WebScraping_js,Add,Find element attribute,          WebScraping_attribute
 Menu,WebScraping_js,Add,Get list of element (dom),          WebScraping_domloop
 Menu,WebScraping_js,Add,Save dom result in file,          WebScraping_domsave
+Menu,WebScraping_js,Add,String replace (substitution of characters),    WebScraping_substitute
+Menu,WebScraping_js,Add,String search (position of characters),    WebScraping_indexof
+Menu,WebScraping_js,Add,String extraction (from a string),    WebScraping_substring
 	Menu,WebScraping,Add,Javascript, :WebScraping_js ;*********** ******************* 
    Menu,WebScraping,Icon,Javascript,     %A_WinDir%\system32\setupapi.dll,13
   
@@ -129,6 +138,129 @@ Menu,WebScraping_js,Add,Save dom result in file,          WebScraping_domsave
 ^Lbutton::Menu, WebScraping, Show  ; right mouse and windows
 ;~ Browser_Forward::Reload
 ;****************************** 
+
+
+WebScraping_dropdownitem:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard=
+(  Join`r`n
+//return number of items in Select dropdown
+dom return document.getElementById("BSDATORE").options.length;
+echo dom_result
+)
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+
+
+
+WebScraping_if:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard=
+(  Join`r`n
+//conditions examples (natural language)
+if day equals to "Friday"	
+if menu contains "fruits"	
+if A more than B and C not equals to D	
+)
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+
+
+WebScraping_for:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard=
+(  Join`r`n
+//loop for with element substitution
+for i from 2 to 10
+{
+element_mem_id = 'body > table.t1 > tbody > tr:nth-child(INDEX) > td:nth-child(1) > a'
+element_mem_id = element_mem_id.replace("INDEX", i);
+read '+element_mem_id+' to mem_id
+//STUFF//
+}
+//while loop
+while cupcakes equal to 12	
+)
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+   
+WebScraping_checkmybox:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard=
+(  Join`r`n
+// Check checkbox
+dom document.forms[0].settimaneRetribuzioneSelezionate[0].checked = true;
+)
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+
+WebScraping_indexof:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard=
+(  Join`r`n
+//return 1st position of string in other string
+str = "Hello world";
+position = str.indexOf("e");
+echo "position= " + position
+)
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+
+
+WebScraping_substring:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard=
+(  Join`r`n
+//extract some characters from a string
+str = "Hello world!";
+res = str.substring(1, 4);
+echo "res= " + res
+)
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+
+
+WebScraping_substitute:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard=
+(  Join`r`n
+//substitute comma by dot
+str='5,17'
+newstr=str.replace(',', '.');
+echo "newstr= " + newstr
+)
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+   
+WebScraping_atribute:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard=
+(  Join`r`n
+//Getting href (or other attributes) of web element   
+element_identifier = '#c_16 > div:nth-child(1) > h3 > a'
+myurl = this.getElementsAttribute(element_identifier, 'href')
+echo myurl   
+)
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+
+   
+WebScraping_checkbox:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard=
+(  Join`r`n
+//return if a checkbox is checked, example:
+http://echoecho.com/htmlforms09.htm
+dom return document.querySelector('input[type="checkbox"]:nth-child(2)').checked
+if dom_result equals to true 
+variable=1
+else
+variable=0
+echo 'variable: '+variable
+)
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+
    
 WebScraping_proxy:
 Store:=ClipboardAll  ;****Store clipboard ****
@@ -138,6 +270,27 @@ Clipboard=
 //The last 2 parameters are the username and password, if your proxy service provider requires credentials.
 phantom.setProxy('IP', 'port', 'manual', '', '');
 https://www.google.com/
+)
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+
+WebScraping_popup:  
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard=
+(  Join`r`n
+http://tebel.org/index_mobile.php
+// click ABOUT footer to open a new tab window
+click ABOUT
+// the execution context is still at the original window
+// in order to interact with the new tab window use popup step
+// the popup step looks for a keyword in the urls within the
+// list of tabs that you have opened in this session of tagui
+// after the next step, context returns to original window
+popup about_tebel
+{
+print file-about_tebel-LC2
+snap file-about_tebel-LC2
+}
 )
 Gosub Paste_and_Restore_Stored_Clipboard
 return
@@ -210,6 +363,8 @@ Clipboard=
 check text() contains "Click here" | "page text contains this text" | "page text does NOT contain this text"
 //click on text 
 click //*[text()="Click here"]
+//click on text contained in vriable
+click //*[text()="'+variable+'"]	
 )
 Gosub Paste_and_Restore_Stored_Clipboard
 return
@@ -254,7 +409,13 @@ return
 
 WebScraping_present:
 Store:=ClipboardAll  ;****Store clipboard ****
-Clipboard:="if present(***Selector***) {   ....  } "
+Clipboard=
+(  Join`r`n
+if present('Selector') 
+{   
+//STUFF//
+} 
+)
 Gosub Paste_and_Restore_Stored_Clipboard
 return
    
