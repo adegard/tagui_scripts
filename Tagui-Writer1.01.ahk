@@ -41,7 +41,7 @@ Menu,WebScraping_Click,Icon,move cursor to element, %A_windir%\system32\shell32.
    Menu,WebScraping,Icon,Click,     %A_WinDir%\system32\mmcndmgr.dll,51
 
 ;*************Set***************** 
-Menu,WebScraping_set,Add,Enter text,          WebScraping_enter
+Menu,WebScraping_set,Add,Enter text or variables or arrays,          WebScraping_enter
 Menu,WebScraping_set,Add,Enter value from repository,          WebScraping_enterrepo
 Menu,WebScraping_set,Add,Check a Checkbox,          WebScraping_checkmybox
 Menu,WebScraping_set,Add,Choose dropdown option,          WebScraping_option
@@ -117,6 +117,8 @@ Menu,WebScraping_pro,Add,check condition and print result,    WebScraping_check
 Menu,WebScraping_pro,Add,Access to frame in webpage,    WebScraping_frame
 Menu,WebScraping_pro,Add,Access to second browser tab,    WebScraping_popup
 Menu,WebScraping_pro,Add,Access under Proxy,    WebScraping_proxy
+Menu,WebScraping_pro,Add,Integration with R,    WebScraping_R
+
 
 	Menu,WebScraping,Add,Pro steps, :WebScraping_pro ;*********** ******************* 
    Menu,WebScraping,Icon,Pro steps,     %A_WinDir%\system32\shell32.dll,72
@@ -131,6 +133,7 @@ Menu,WebScraping_js,Add,Save dom result in file,          WebScraping_domsave
 Menu,WebScraping_js,Add,String replace (substitution of characters),    WebScraping_substitute
 Menu,WebScraping_js,Add,String search (position of characters),    WebScraping_indexof
 Menu,WebScraping_js,Add,String extraction (from a string),    WebScraping_substring
+Menu,WebScraping_js,Add,Convert Lowercase/uppercase,    WebScraping_case
 	Menu,WebScraping,Add,Javascript, :WebScraping_js ;*********** ******************* 
    Menu,WebScraping,Icon,Javascript,     %A_WinDir%\system32\setupapi.dll,13
   
@@ -165,21 +168,45 @@ if A more than B and C not equals to D
 Gosub Paste_and_Restore_Stored_Clipboard
 return
 
+WebScraping_R:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard=
+(  Join`r`n
+// you can use r begin and r finish to denote a R code block
+r begin
+a=1;b=2
+c=a+b
+cat(c)
+r finish
+echo r_result
+// alternatively,launch R script like this
+r begin
+source("/Users/kensoh/Desktop/sampler2.r")
+r finish
+)
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+
 
 WebScraping_for:
 Store:=ClipboardAll  ;****Store clipboard ****
 Clipboard=
 (  Join`r`n
-//loop for with element substitution
-for i from 2 to 10
+//loop for with some element substitution
+for i from 1 to 3
 {
-element_mem_id = 'body > table.t1 > tbody > tr:nth-child(INDEX) > td:nth-child(1) > a'
-element_mem_id = element_mem_id.replace("INDEX", i);
-read '+element_mem_id+' to mem_id
-//STUFF//
-}
-//while loop
-while cupcakes equal to 12	
+element_symb = 'ul > li:nth-child(INDEX) .cell-market-name_name'
+element_size = 'ul > li:nth-child(INDEX) .cell-size'
+element_symb = element_symb.replace("INDEX", i);
+element_size = element_size.replace("INDEX", i);
+
+	if present(element_symb)
+	{
+	read '+element_symb+' to symb
+	read '+element_size+' to size
+	echo 'result : ' + symb + ' : ' + size
+	}
+}	
 )
 Gosub Paste_and_Restore_Stored_Clipboard
 return
@@ -202,6 +229,18 @@ Clipboard=
 str = "Hello world";
 position = str.indexOf("e");
 echo "position= " + position
+)
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+
+
+WebScraping_case:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard=
+(  Join`r`n
+//convert Lowercase/uppercase
+myString = myString.toLowerCase();
+myString = myString.toUpperCase();
 )
 Gosub Paste_and_Restore_Stored_Clipboard
 return
@@ -363,7 +402,7 @@ Clipboard=
 check text() contains "Click here" | "page text contains this text" | "page text does NOT contain this text"
 //click on text 
 click //*[text()="Click here"]
-//click on text contained in vriable
+//click on text contained in variable
 click //*[text()="'+variable+'"]	
 )
 Gosub Paste_and_Restore_Stored_Clipboard
@@ -587,11 +626,22 @@ Clipboard:="hover '***element***' "
 Gosub Paste_and_Restore_Stored_Clipboard
 return
 
+
 WebScraping_enter:
 Store:=ClipboardAll  ;****Store clipboard ****
-Clipboard:="enter ***element*** as ***text*** (or variable without quotation marks)"
+Clipboard=
+(  Join`r`n
+//entering text
+enter ***element*** as 'my text' 
+//entering variable without quotation marks
+enter ***element*** as variable
+//entering array variable with special marks
+enter ***element*** as '+array[1]+'
+)
 Gosub Paste_and_Restore_Stored_Clipboard
 return
+
+
 
 WebScraping_enterrepo:
 Store:=ClipboardAll  ;****Store clipboard ****
