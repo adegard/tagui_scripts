@@ -28,8 +28,8 @@ From Source (ahk file):
 
 
 <h1>ScreenShoter:  screenshoter.ahk </h1>
-Capture sreen shots for Visual automation (Tagui - Sikuli)  and save it directly in png file!
+Capture screen shots for Visual automation (Tagui - Sikuli)  and save it directly in png file (same directory)!
 
 - Install AutoHotKey
 - save and launch https://github.com/adegard/tagui_scripts/blob/master/screenshoter.ahk
-- Printkey to start, to finisch and to save file (3 times)
+- Press Printkey to start, to finish (red rectangle) and to save file (3 times)
