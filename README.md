@@ -13,7 +13,7 @@ The tool is written in ahk.
 
 # Installation (Windows)
 
-System requirements: the tool was test on Windows 10. It use a set of Windows shell icons.
+System requirements: the tool was tested on Windows 10. It use a set of Windows shell icons.
 
 Compiled (exe file):
 - save and launch https://github.com/adegard/tagui_scripts/blob/master/Tagui-Writer1.01.exe
