@@ -85,14 +85,36 @@ Menu,WebScraping_get,Icon,Track time between events, %A_windir%\system32\shell32
    ;*************File***************** 
 Menu,WebScraping_file,Add,Save element text to file,          WebScraping_save
 Menu,WebScraping_file,Add,Save text/variables to file,          WebScraping_dump
+Menu,WebScraping_file,Add,Save informations to a csv file,    WebScraping_csv
+Menu,WebScraping_file,Icon,Save informations to a csv file, %A_windir%\system32\shell32.dll,115 
 Menu,WebScraping_file,Add,Append text/variables to file,    WebScraping_append
 Menu,WebScraping_file,Add,Load file content to variable,    WebScraping_load
 Menu,WebScraping_file,Add,upload file to website,    WebScraping_upload
 Menu,WebScraping_file,Add,download from url to file,    WebScraping_download
+Menu,WebScraping_file,Icon,download from url to file, %A_windir%\system32\shell32.dll,123 
 Menu,WebScraping_file,Add,receive resource to file,    WebScraping_receive
+
  
 	Menu,WebScraping,Add,Save-Read File, :WebScraping_file ;*********** ******************* 
    Menu,WebScraping,Icon,Save-Read File,     %A_WinDir%\system32\shell32.dll,71
+   
+   
+   ;*************Databases***************** 
+Menu,WebScraping_db,Add,Take informations from repository,    WebScraping_repo
+Menu,WebScraping_db,Icon,Take informations from repository, %A_windir%\system32\shell32.dll,55 
+Menu,WebScraping_db,Add,Database example to crawl urls,    WebScraping_db1
+Menu,WebScraping_db,Icon,Database example to crawl urls, %A_windir%\system32\shell32.dll,187 
+Menu,WebScraping_db,Add,Database example for set of variables(arrays like),    WebScraping_db2
+Menu,WebScraping_db,Icon,Database example for set of variables(arrays like), %A_windir%\system32\shell32.dll,187 
+
+
+	Menu,WebScraping,Add,Databases/Repositories, :WebScraping_db ;*********** ******************* 
+   Menu,WebScraping,Icon,Databases/Repositories,     %A_WinDir%\system32\shell32.dll,187
+   
+   
+   
+   
+   
  
    ;*************Start***************** 
 Menu,WebScraping_tagui,Add,Run tagui flow,    WebScraping_run
@@ -134,6 +156,8 @@ Menu,WebScraping_js,Add,String replace (substitution of characters),    WebScrap
 Menu,WebScraping_js,Add,String search (position of characters),    WebScraping_indexof
 Menu,WebScraping_js,Add,String extraction (from a string),    WebScraping_substring
 Menu,WebScraping_js,Add,Convert Lowercase/uppercase,    WebScraping_case
+Menu,WebScraping_js,Add,Array declaration,    WebScraping_array
+
 	Menu,WebScraping,Add,Javascript, :WebScraping_js ;*********** ******************* 
    Menu,WebScraping,Icon,Javascript,     %A_WinDir%\system32\setupapi.dll,13
   
@@ -141,6 +165,92 @@ Menu,WebScraping_js,Add,Convert Lowercase/uppercase,    WebScraping_case
 ^Lbutton::Menu, WebScraping, Show  ; right mouse and windows
 ;~ Browser_Forward::Reload
 ;****************************** 
+
+
+WebScraping_repo:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard=
+(  Join`r`n
+// repositories help to make objects or steps reusable and improve readability
+// save repository file with same name as your flow filename and with .csv behind
+// repository must have 2 columns, for example below (headers up to you to name)
+// using 'object' in your flow replaces it with its definition (which can contain objects)
+// for example during execution, 'click link' becomes click //*[@id="profile_full"]//a
+// if you have watched Inception movie, this is inception level 2 (capped at max 2 for now)
+// don't worry about mistakes, TagUI is usually able to tell you which line has what error
+
+// please note that in these precedent comments, the symbol ``` is replaced with '
+// otherwise TagUI will try to interpret it as repository definition
+
+// contents of repository.csv
+// OBJECT,DEFINITION
+// email,quick_email
+// password,quick_pass
+// user_email,mickey_mouse@disney.com
+// user_password,iloveminnie4eva
+// show info,Show full information
+// click link,click ```facebook_link```
+// facebook_link,//*[@id="profile_full"]//a
+
+// somes examples of use :
+enter ```email``` as ```user_email```
+enter ```password``` as ```user_password```
+click ```show info```
+hover ```facebook_link```
+wait 2.5
+```click link```
+wait
+)
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+
+
+WebScraping_db1:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard=
+(  Join`r`n
+// datatables extend the power of repositories files to manage batch automation
+// datatable has 2 or more columns, for example below (headers up to you to name)
+// data-centric approach with rows representing data fields (usually row = test case)
+
+// Example : content of datatable.csv with the same name of tagui file
+// file in this format can be from flow 6A using JavaScript, or using Excel transpose function
+// 6B_GETCONTACT,#1,#2,#3
+// user_url,https://github.com/s0b0lev,https://github.com/zongUMR,https://github.com/jkmartindale
+
+```user_url```
+// TagUI loops through each column to automate using values from different datasets
+// for example, echo "URL - ```user_url```" in your flow shows URL - https://github.com/s0b0lev
+
+// read User Full Name and GitHub ID to variables
+read fullname to fullname
+read username to username
+echo fullname "," username 
+)
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+
+
+WebScraping_db2:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard=
+(  Join`r`n
+// contents of datatable.csv 
+// DATA,#1,#2,#3
+// GITHUB_ID,ironman,batman,superman
+// USER_EMAIL,tony@stark.org,bruce@wayne.org,clarke@kent.org
+
+// TagUI loops through each column to automate using values from different datasets
+// set respective User IDs and User Emails and display to screen and log file
+
+// example of use :
+github_id = "```GITHUB_ID```"
+user_email = "```USER_EMAIL```";
+echo github_id " - " user_email
+)
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+
 
 
 WebScraping_dropdownitem:
@@ -154,6 +264,15 @@ echo dom_result
 Gosub Paste_and_Restore_Stored_Clipboard
 return
 
+WebScraping_array:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard=
+(  Join`r`n
+//array declaration
+cars = ["Saab", "Volvo", "BMW"];
+)
+Gosub Paste_and_Restore_Stored_Clipboard
+return
 
 
 WebScraping_if:
@@ -487,8 +606,9 @@ Clipboard=
 // following loop through directly in webpage dom to compile and return list of profile ids
 dom id_list = ""; for (n=1;n<=51;n++) {id_list += document.querySelector('.follow-list-item:nth-child('+n+') a').href + '\n'}; return id_list; 
 echo dom_result
+// you can also use JavaScript to do post-processing and write to a file, or to a format directly usable by flow 6B
+var fs = require('fs'); fs.write("/tmp/urls.csv", dom_result + "\n", 'w');
 )
-
 Gosub Paste_and_Restore_Stored_Clipboard
 return
 
@@ -640,6 +760,22 @@ enter ***element*** as '+array[1]+'
 )
 Gosub Paste_and_Restore_Stored_Clipboard
 return
+
+
+
+WebScraping_csv:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard=
+(  Join`r`n
+// write the information received into a csv spreadsheet file
+// set file to appropriate location, especially if using Windows
+var fs = require('fs'); fs.write("/tmp/contacts.csv", "\""+fullname+"\",\""+username+"\",\""+email+"\",\""+url+"\",\""+country+"\",\""+bio+"\"\n", 'a');
+)
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+
+
+
 
 
 
