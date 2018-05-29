@@ -1,5 +1,7 @@
 # tagui_scripts
 
+TagUI : TagUI setup: https://github.com/kelaberetiv/TagUI 
+
 <h1>TagUI Code Writer:  Tagui-Writer1.01 </h1>
 
 # Why This 
@@ -16,7 +18,6 @@ Compiled (exe file):
 - Ctrl+left Click to show Menu and insert code
 
 From Source (ahk file):
-- Install TagUI : TagUI setup: https://github.com/kelaberetiv/TagUI 
 - Install AutoHotKey : https://autohotkey.com/
 - Open Editor of your choice (Notepad+++ is great)
 - save and launch https://github.com/adegard/tagui_scripts/blob/master/Tagui-Writer1.01.ahk
