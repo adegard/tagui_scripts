@@ -6,7 +6,7 @@ TagUI reference: https://github.com/kelaberetiv/TagUI
 Easily print in your code little snippets (examples) in TagUI language.
 
 # Why This ?
-TagUI is very easy language and use native language for web-scraping and RPA (Robotic Process Automation), but at the begin it could be a bit tricky to find and remember the commands. Then I built this tool to simplify coding for beginners. Enjoy!
+TagUI is very powerful program which use native language for web-scraping and RPA (Robotic Process Automation), but at the begin it could be a bit tricky to find and remember all commands. Then I built this tool to simplify and accelerate coding. Enjoy!
 
 <img src="https://raw.githubusercontent.com/adegard/tagui_scripts/master/20180529164038.png"  align="center">
 
