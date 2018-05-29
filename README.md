@@ -34,11 +34,7 @@ Use it in TagUI program, i.e. click 'image.png'
 
 <img src="https://raw.githubusercontent.com/adegard/tagui_scripts/master/20180529212133.png"  align="center">
 
-# Installation (Windows)
-Compiled (exe file):
-(It uses a set of %windir%\system32\shell32.dll Windows Shell Common icons)
-- save and launch https://github.com/adegard/tagui_scripts/blob/master/screenshoter.exe
-- Press Printkey to start, to finish (red rectangle) and to save file (3 times)
+# Installation
 
 Source (ahk file):
 - Install AutoHotKey
