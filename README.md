@@ -28,13 +28,12 @@ Source file (ahk file):
 
 
 <h1>ScreenShoter:  screenshoter.ahk </h1>
-
-# Why This ?
-Capture screen shots for Visual automation (Tagui - Sikuli)  and save it directly in png file (same directory)!
-
-
+Capture screen shots and save it directly in png file!
 <img src="https://raw.githubusercontent.com/adegard/tagui_scripts/master/20180529212133.png"  align="center">
-Use it in TagUI program with Sikuli integratio, to allow identifying web elements and desktop user interface elements, i.e.:
+# Why This ?
+Capture screen shots for Visual automation (Tagui - Sikuli) is time-consuming. Then this tool could help you increase you bot coding productivity.
+
+Use screenshots in TagUI - Sikuli integration, to identify web elements and desktop user interface elements..., i.e.:
 click image.png
 
 
