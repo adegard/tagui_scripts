@@ -4,9 +4,8 @@ TagUI setup: https://github.com/kelaberetiv/TagUI
 
 <h1>TagUI Code Writer:  Tagui-Writer1.01 </h1>
 
-# Why This 
+# Why This ?
 Easily print in your code little snippets (examples) in TagUI language.
-The tool is written in ahk.
 
 <img src="https://raw.githubusercontent.com/adegard/tagui_scripts/master/20180529164038.png"  align="center">
 
