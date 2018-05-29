@@ -1,6 +1,5 @@
 # tagui_scripts
 
-TagUI reference: https://github.com/kelaberetiv/TagUI 
 
 <h1>TagUI Code Writer:  Tagui-Writer1.01 </h1>
 Easily print in your code little snippets (examples) in TagUI language:
@@ -8,7 +7,7 @@ Easily print in your code little snippets (examples) in TagUI language:
 <img src="https://raw.githubusercontent.com/adegard/tagui_scripts/master/20180529214753.png"  align="center">
 
 # Why This ?
-TagUI is very powerful program which use native language for web-scraping and RPA (Robotic Process Automation), but at the begin it could be a bit tricky to find and remember all commands. Then I built this tool to simplify and accelerate coding. Enjoy!
+TagUI (reference: https://github.com/kelaberetiv/TagUI) is very powerful program which use native language for web-scraping and RPA (Robotic Process Automation), but at the begin it could be a bit tricky to find and remember all commands. Then I built this tool to simplify and accelerate coding. Enjoy!
 
 # Installation (Windows)
 
