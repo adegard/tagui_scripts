@@ -1,6 +1,6 @@
 # tagui_scripts
 
-TagUI setup: https://github.com/kelaberetiv/TagUI 
+TagUI reference: https://github.com/kelaberetiv/TagUI 
 
 <h1>TagUI Code Writer:  Tagui-Writer1.01 </h1>
 
