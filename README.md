@@ -7,6 +7,14 @@ Easily print in your code little snippets (examples) in TagUI language
 
 <img src="https://raw.githubusercontent.com/adegard/tagui_scripts/master/20180510123237.png"  align="center">
 
+
+# Install
+
+Compiled (exe file)
+- save and launch https://github.com/adegard/tagui_scripts/blob/master/Tagui-Writer1.01.exe
+- Ctrl+left Click to show Menu and insert code
+
+From Source (ahk file)
 - Install TagUI : TagUI setup: https://github.com/kelaberetiv/TagUI 
 - Install AutoHotKey : https://autohotkey.com/
 - Open Editor of your choice (Notepad+++ is great)
