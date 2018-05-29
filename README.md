@@ -4,8 +4,7 @@ TagUI reference: https://github.com/kelaberetiv/TagUI
 
 <h1>TagUI Code Writer:  Tagui-Writer1.01 </h1>
 Easily print in your code little snippets (examples) in TagUI language:
-
-
+</br>
 <img src="https://raw.githubusercontent.com/adegard/tagui_scripts/master/20180529214753.png"  align="center">
 
 # Why This ?
