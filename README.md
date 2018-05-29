@@ -1,6 +1,6 @@
 # tagui_scripts
 
-<h1>TagUI commands Helper:  Tagui-Writer1.01.ahk (Beta)</h1>
+<h1>TagUI Code Writer:  Tagui-Writer1.01.ahk (Beta)</h1>
 
 # Why This 
 Easily print in your code little snippets (examples) in TagUI language
