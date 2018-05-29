@@ -4,7 +4,7 @@
 Menu, tray, icon, %A_WinDir%\system32\shell32.dll, 264
 ;***********************tray items********************************.
 Menu, Tray, NoStandard ;removes default options
-;Menu, Tray, Add, Helpful Links, Helpful_Links
+Menu, Tray, Add, Helpful Links, Helpful_Links
 Menu, Tray, Add, About this program, About
 Menu, Tray, Add, 
 Menu, Tray, Add, Reload
@@ -12,9 +12,6 @@ Menu, Tray, Add, Edit
 Menu, Tray, Add, Exit
 ;****************************** 
 
-
-
-;http(s)://	just enter full url of webpage ('+variable+' for variable)	go to specified webpage
 
 
 
@@ -44,6 +41,7 @@ Menu,WebScraping_Click,Icon,move cursor to element, %A_windir%\system32\shell32.
 Menu,WebScraping_set,Add,Enter text or variables or arrays,          WebScraping_enter
 Menu,WebScraping_set,Add,Enter value from repository,          WebScraping_enterrepo
 Menu,WebScraping_set,Add,Check a Checkbox,          WebScraping_checkmybox
+Menu,WebScraping_set,Icon,Check a Checkbox, %A_windir%\system32\shell32.dll,217 
 Menu,WebScraping_set,Add,Choose dropdown option,          WebScraping_option
 Menu,WebScraping_set,Add,Press Enter key in element,          WebScraping_pressenter
 
@@ -55,6 +53,7 @@ Menu,WebScraping_set,Add,Press Enter key in element,          WebScraping_presse
 Menu,WebScraping_get,Add,Check text presence,    					WebScraping_checktext
 Menu,WebScraping_get,Icon,Check text presence, %A_windir%\system32\shell32.dll,219 
 Menu,WebScraping_get,Add,Return if checkbox is checked,    					WebScraping_checkbox
+Menu,WebScraping_get,Icon,Return if checkbox is checked, %A_windir%\system32\shell32.dll,217 
 Menu,WebScraping_get,Add,Count items in dropdown select,    					WebScraping_dropdownitem
 Menu,WebScraping_get,Add,Getting attribute (like href) of elements,    			WebScraping_atribute
 Menu,WebScraping_get,Add,Read element text to variable,          WebScraping_read
@@ -90,6 +89,7 @@ Menu,WebScraping_file,Icon,Save informations to a csv file, %A_windir%\system32\
 Menu,WebScraping_file,Add,Append text/variables to file,    WebScraping_append
 Menu,WebScraping_file,Add,Load file content to variable,    WebScraping_load
 Menu,WebScraping_file,Add,upload file to website,    WebScraping_upload
+Menu,WebScraping_file,Icon,upload file to website, %A_windir%\system32\shell32.dll,264 
 Menu,WebScraping_file,Add,download from url to file,    WebScraping_download
 Menu,WebScraping_file,Icon,download from url to file, %A_windir%\system32\shell32.dll,123 
 Menu,WebScraping_file,Add,receive resource to file,    WebScraping_receive
@@ -160,6 +160,14 @@ Menu,WebScraping_js,Add,Array declaration,    WebScraping_array
 
 	Menu,WebScraping,Add,Javascript, :WebScraping_js ;*********** ******************* 
    Menu,WebScraping,Icon,Javascript,     %A_WinDir%\system32\setupapi.dll,13
+  
+  
+;******************************
+;***********Help*******************
+;******************************
+Menu,WebScraping,Add, ;***********spacer*******************
+Menu,WebScraping,Add, Helpful links, Helpful_Links
+return
   
 ;******************************  
 ^Lbutton::Menu, WebScraping, Show  ; right mouse and windows
@@ -776,12 +784,17 @@ return
 
 
 
-
-
-
 WebScraping_enterrepo:
 Store:=ClipboardAll  ;****Store clipboard ****
-Clipboard:="enter ***element*** as 'text'"
+Clipboard=
+(  Join`r`n
+// contents of datatable.csv
+// DATA,#1,#2,#3
+// GITHUB_ID,ironman,batman,superman
+// USER_EMAIL,tony@stark.org,bruce@wayne.org,clarke@kent.org
+
+enter ***element*** as "```GITHUB_ID```"
+)
 Gosub Paste_and_Restore_Stored_Clipboard
 return
 
@@ -859,6 +872,30 @@ Sleep, 50
 Clipboard:=Store  ;Restore clipboard to original contents
 return
 
+
+
+;***********Helpful Links*******************
+Helpful_Links:
+Gui, Helpful:Destroy
+Gui, Helpful:Font,Bold cBlack Norm
+Gui, Helpful:Add,Text,y+5 ,Tagui Links
+Gui, Helpful:Font,CBlue Underline
+Gui, Helpful:Add,Text,y+5 GTagui_Github, TagUI GitHub
+Gui, Helpful:Add,Text,y+5 GTagui_Tutorial, TagUI Youtube Tutorial
+;******************************
+Gui, Helpful:Font,Bold cBlack Norm
+Gui, Helpful:Add,Text,y+20, Tagui Writer 
+Gui, Helpful:Font,CBlue Underline
+Gui, Helpful:Add,Text,y+10 GTagui_writer, Tagui Writer
+
+hCurs:=DllCall("LoadCursor","UInt",NULL,"Int",32649,"UInt") ;IDC_HAND
+onMessage(0x200, "MsgHandler")
+
+Gui, Helpful:Show,w225 , Helpful links
+return
+
+
+
 ;***********About me******************* 
 About:
 Gui,About:Destroy
@@ -874,6 +911,24 @@ onMessage(0x200, "MsgHandler")
  Gui,About:Font
  Gui,About:Show,, About
 return
+
+
+Tagui_Github:
+Run, https://github.com/kelaberetiv/TagUI
+gosub GuiClose
+Return
+
+
+Tagui_Tutorial:
+Run, https://www.youtube.com/watch?v=-1M6yuiF7BQ
+gosub GuiClose
+Return
+
+Tagui_writer:
+Run, https://github.com/adegard/tagui_scripts
+gosub GuiClose
+Return
+
 Exit:
 ExitApp
 Return
