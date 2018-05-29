@@ -6,7 +6,7 @@ TagUI setup: https://github.com/kelaberetiv/TagUI
 
 # Why This 
 Easily print in your code little snippets (examples) in TagUI language.
-The tool is writen in ahk.
+The tool is written in ahk.
 
 <img src="https://raw.githubusercontent.com/adegard/tagui_scripts/master/20180529164038.png"  align="center">
 
