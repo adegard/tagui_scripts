@@ -16,13 +16,14 @@ Compiled (exe file):
 (It uses a set of %windir%\system32\shell32.dll Windows Shell Common icons)
 
 - save and launch https://github.com/adegard/tagui_scripts/blob/master/Tagui-Writer1.01.exe
-- Ctrl+left Click to show Menu and insert code
+- Open Editor of your choice (Notepad++ is great)
+- <b>Ctrl+left Click to show Menu</b> and insert code
 
 From Source (ahk file):
 - Install AutoHotKey : https://autohotkey.com/
-- Open Editor of your choice (Notepad+++ is great)
+- Open Editor of your choice (Notepad++ is great)
 - save and launch https://github.com/adegard/tagui_scripts/blob/master/Tagui-Writer1.01.ahk
-- Ctrl+left Click to show Menu and insert code
+- <b>Ctrl+left Click to show Menu</b> and insert code
 
 
 
