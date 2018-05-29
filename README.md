@@ -1,20 +1,21 @@
 # tagui_scripts
 
-<h1>TagUI Code Writer:  Tagui-Writer1.01.ahk (Beta)</h1>
+<h1>TagUI Code Writer:  Tagui-Writer1.01 </h1>
 
 # Why This 
-Easily print in your code little snippets (examples) in TagUI language
+Easily print in your code little snippets (examples) in TagUI language.
+The tool is writen in ahk.
 
 <img src="https://raw.githubusercontent.com/adegard/tagui_scripts/master/20180510123237.png"  align="center">
 
 
-# Install
+# Installation
 
-Compiled (exe file)
+Compiled (exe file):
 - save and launch https://github.com/adegard/tagui_scripts/blob/master/Tagui-Writer1.01.exe
 - Ctrl+left Click to show Menu and insert code
 
-From Source (ahk file)
+From Source (ahk file):
 - Install TagUI : TagUI setup: https://github.com/kelaberetiv/TagUI 
 - Install AutoHotKey : https://autohotkey.com/
 - Open Editor of your choice (Notepad+++ is great)
