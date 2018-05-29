@@ -28,6 +28,7 @@ Source file (ahk file):
 
 
 <h1>ScreenShoter:  screenshoter.ahk </h1>
+
 # Why This ?
 Capture screen shots for Visual automation (Tagui - Sikuli)  and save it directly in png file (same directory)!
 
