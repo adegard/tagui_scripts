@@ -760,7 +760,7 @@ Store:=ClipboardAll  ;****Store clipboard ****
 Clipboard=
 (  Join`r`n
 //entering text
-enter ***element*** as 'my text' 
+enter ***element*** as my text 
 //entering variable without quotation marks
 enter ***element*** as variable
 //entering array variable with special marks
