@@ -42,3 +42,6 @@ Source (ahk file):
 - Install AutoHotKey
 - save and launch https://github.com/adegard/tagui_scripts/blob/master/screenshoter.ahk
 - Press Printkey to start, to finish (red rectangle) and to save file (3 times)
+
+# Contributions
+https://simplestipsandtricks.blogspot.com/
