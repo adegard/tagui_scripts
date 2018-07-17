@@ -24,6 +24,8 @@ Source file (ahk file):
 - save and launch https://github.com/adegard/tagui_scripts/blob/master/Tagui-Writer1.01.ahk
 - <b>Ctrl+left Click to show Menu</b> and insert code
 
+# Uninstall
+no need of uninstaller, just delete the file (close it before in windows tray : right click on icon and choose "Exit" 
 
 
 <h1>ScreenShoter:  screenshoter.ahk </h1>
