@@ -29,6 +29,8 @@ Menu,Webscraping,Icon,Webpage, %A_WinDir%\system32\SHELL32.dll, 18 ; %A_WinDir%\
 ;****************************** 
 Menu,WebScraping_Click,Add,Click on Element,          WebScraping_Click
 Menu,WebScraping_Click,Icon,Click on Element, %A_windir%\system32\shell32.dll,100 
+Menu,WebScraping_Click,Add,Click on image,          WebScraping_image
+Menu,WebScraping_Click,Icon,Click on image, %A_windir%\system32\shell32.dll,100 
 Menu,WebScraping_Click,Add,Click on Text,          WebScraping_text
 Menu,WebScraping_Click,Icon,Click on Text, %A_windir%\system32\shell32.dll,75 
 Menu,WebScraping_Click,Add,move cursor to element,WebScraping_Click_Focus
@@ -108,7 +110,8 @@ Menu,WebScraping_db,Add,Database example to crawl urls,    WebScraping_db1
 Menu,WebScraping_db,Icon,Database example to crawl urls, %A_windir%\system32\shell32.dll,187 
 Menu,WebScraping_db,Add,Database example for set of variables(arrays like),    WebScraping_db2
 Menu,WebScraping_db,Icon,Database example for set of variables(arrays like), %A_windir%\system32\shell32.dll,187 
-
+Menu,WebScraping_db,Add,MySQL Database access read and write,    WebScraping_db3
+Menu,WebScraping_db,Icon,MySQL Database access read and write, %A_windir%\system32\shell32.dll,187 
 
 	Menu,WebScraping,Add,Databases/Repositories, :WebScraping_db ;*********** ******************* 
    Menu,WebScraping,Icon,Databases/Repositories,     %A_WinDir%\system32\shell32.dll,187
@@ -169,12 +172,15 @@ Menu,WebScraping_js,Add,Array declaration,    WebScraping_array
 ;******************************
 Menu,WebScraping,Add, ;***********spacer*******************
 Menu,WebScraping,Add, Helpful links, Helpful_Links
+Menu,WebScraping,Add, Exit App, Exit
 return
   
 ;******************************  
 ^Lbutton::Menu, WebScraping, Show  ; right mouse and windows
 ;~ Browser_Forward::Reload
 ;****************************** 
+
+
 
 
 WebScraping_repo:
@@ -261,6 +267,50 @@ echo github_id " - " user_email
 Gosub Paste_and_Restore_Stored_Clipboard
 return
 
+
+WebScraping_db3:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard=
+(  Join`r`n
+// form sql query to read from database and save to os script
+// on mac/linux be sure that read_db file has execute permission
+sql_query = 'mysql DATABASE_NAME -e "SELECT NAME,EMAIL FROM TABLE_NAME"'
+dump sql_query to read_db
+
+// above assumes running as root user from server, if database credentials are required, use below -
+// sql_query = 'mysql DATABASE_NAME --user=username --password=\'password\' -e "SELECT NAME,EMAIL FROM TABLE_NAME"'
+
+// use run step to run the script and retrieve results
+run /full_path_to_flow/read_db
+db_result = run_result.split('\n')
+for row from 1 to db_result.length
+{
+        db_row = db_result[row-1].split('\t')
+        echo db_row[0] ',' db_row[1]
+}
+
+// form sql query to write to database and save to os script
+// on mac/linux be sure that read_db file has execute permission
+sql_query = 'mysql DATABASE_NAME -e "UPDATE TABLE_NAME SET NAME=\'KS\' WHERE EMAIL=\'kensoh@gmail.com\'"'
+dump sql_query to write_db
+
+// above assumes running as root user from server, if database credentials are required, use below -
+// sql_query = 'mysql DATABASE_NAME --user=username --password=\'password\' -e "SELECT NAME,EMAIL FROM TABLE_NAME"'
+
+// use run step to run the script to write
+run /full_path_to_flow/write_db
+
+// repeat the reading of database showing new data
+run /full_path_to_flow/read_db
+db_result = run_result.split('\n')
+for row from 1 to db_result.length
+{
+        db_row = db_result[row-1].split('\t')
+        echo db_row[0] ',' db_row[1]
+}
+)
+Gosub Paste_and_Restore_Stored_Clipboard
+return
 
 
 WebScraping_dropdownitem:
@@ -775,6 +825,24 @@ return
 WebScraping_Click:
 Store:=ClipboardAll  ;****Store clipboard ****
 Clipboard:="click ***element***   //i.e. using variable: click '+element_identifier+' "
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+
+
+WebScraping_image:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard=
+(  Join`r`n
+//click on specific image file (use Screenshoter tool)
+click C:\TagUI\filename.png
+)
+Gosub Paste_and_Restore_Stored_Clipboard
+return
+
+
+
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard:="click C:/myimage.png "
 Gosub Paste_and_Restore_Stored_Clipboard
 return
 
