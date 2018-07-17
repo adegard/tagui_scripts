@@ -1,7 +1,7 @@
 # tagui_scripts
 
 
-<h1>TagUI Code Writer:  Tagui-Writer1.01 </h1>
+<h1>TagUI Code Writer:  Tagui-Writer1.0x </h1>
 Easily print in your code little snippets (examples) in TagUI language:
 </br>
 <img src="https://raw.githubusercontent.com/adegard/tagui_scripts/master/20180529214753.png"  align="center">
@@ -14,14 +14,14 @@ TagUI (reference: https://github.com/kelaberetiv/TagUI) is very powerful program
 Compiled (exe file):
 (It uses a set of %windir%\system32\shell32.dll Windows Shell Common icons)
 
-- save and launch https://github.com/adegard/tagui_scripts/blob/master/Tagui-Writer1.01.exe
+- save and launch https://github.com/adegard/tagui_scripts/blob/master/Tagui-Writer1.02.exe
 - Open Editor of your choice (Notepad++ is great)
 - <b>Ctrl+left Click to show Menu</b> and insert code
 
 Source file (ahk file):
 - Install AutoHotKey : https://autohotkey.com/
 - Open Editor of your choice (Notepad++ is great)
-- save and launch https://github.com/adegard/tagui_scripts/blob/master/Tagui-Writer1.01.ahk
+- save and launch https://github.com/adegard/tagui_scripts/blob/master/Tagui-Writer1.02.ahk
 - <b>Ctrl+left Click to show Menu</b> and insert code
 
 # Uninstall
