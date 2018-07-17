@@ -14,7 +14,8 @@ TagUI (reference: https://github.com/kelaberetiv/TagUI) is very powerful program
 Compiled (exe file):
 (It uses a set of %windir%\system32\shell32.dll Windows Shell Common icons)
 
-- save and launch https://github.com/adegard/tagui_scripts/blob/master/Tagui-Writer1.02.exe
+- save and run https://github.com/adegard/tagui_scripts/blob/master/Tagui-Writer1.02.exe
+- Windows gave a security warning : choose to continue.
 - Open Editor of your choice (Notepad++ is great)
 - <b>Ctrl+left Click to show Menu</b> and insert code
 
