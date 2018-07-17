@@ -26,7 +26,7 @@ Source file (ahk file):
 - <b>Ctrl+left Click to show Menu</b> and insert code
 
 # Uninstall
-no need of uninstaller, just delete the file (close it before in windows tray : right click on icon and choose "Exit" 
+no need of uninstaller, just delete the file (close it before : left click and choose "Exit App") 
 
 
 <h1>ScreenShoter:  screenshoter.ahk </h1>
