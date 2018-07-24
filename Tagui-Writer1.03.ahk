@@ -893,11 +893,13 @@ Store:=ClipboardAll  ;****Store clipboard ****
 Clipboard=
 (  Join`r`n
 //email to check/append
-email="pinco@gmail.com";
+email="pinco1@gmail.com";
 
 //path of file to create/use
 //this file must exist:
-path="/tmp/emails.csv";
+path="/tmp/myfile.csv";
+
+fs = require('fs');if (!fs.exists(path))  fs.write(path, 'Mailing list \n', 'w');
 
 load '+path+' to database_emails
 echo 'database_emails: '+database_emails
