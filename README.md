@@ -47,4 +47,5 @@ Source (ahk file):
 - Press Printkey to start, to finish (red rectangle) and to save file (3 times)
 
 # Contributions
-https://simplestipsandtricks.blogspot.com/
+Blog: https://simplestipsandtricks.blogspot.com/
+Youtube chanel: https://www.youtube.com/channel/UCj_yWYv_K-WJ4PARgEzP07Q
