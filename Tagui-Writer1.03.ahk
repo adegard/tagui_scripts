@@ -31,6 +31,8 @@ Menu,WebScraping_Click,Add,Click on Element,          WebScraping_Click
 Menu,WebScraping_Click,Icon,Click on Element, %A_windir%\system32\shell32.dll,100 
 Menu,WebScraping_Click,Add,Click on image,          WebScraping_image
 Menu,WebScraping_Click,Icon,Click on image, %A_windir%\system32\shell32.dll,100 
+Menu,WebScraping_Click,Add,Click on current mouse position,          WebScraping_mouse
+Menu,WebScraping_Click,Icon,Click on current mouse position, %A_windir%\system32\shell32.dll,100 
 Menu,WebScraping_Click,Add,Click on Text,          WebScraping_text
 Menu,WebScraping_Click,Icon,Click on Text, %A_windir%\system32\shell32.dll,75 
 Menu,WebScraping_Click,Add,move cursor to element,WebScraping_Click_Focus
@@ -841,6 +843,22 @@ click C:\TagUI\filename.png
 Gosub Paste_and_Restore_Stored_Clipboard
 return
 
+WebScraping_mouse:
+Store:=ClipboardAll  ;****Store clipboard ****
+Clipboard=
+(  Join`r`n
+//click on current mouse position using Sikuli 
+//left click
+vision click(atMouse())
+
+//right click
+vision rightClick(atMouse())
+
+//double click
+vision doubleClick(atMouse())
+)
+Gosub Paste_and_Restore_Stored_Clipboard
+return
 
 
 Store:=ClipboardAll  ;****Store clipboard ****
