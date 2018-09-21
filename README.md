@@ -49,3 +49,4 @@ Source (ahk file):
 # Contributions
 Blog: https://simplestipsandtricks.blogspot.com/
 Youtube chanel: https://www.youtube.com/channel/UCj_yWYv_K-WJ4PARgEzP07Q
+Book: L'era dei Web-Bots: Revoluziona il tuo business con al Robotic Process Automation e Web-Scraping applicati al Web-marketing http://amzn.eu/7Dw5NdF (italian)
