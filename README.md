@@ -53,6 +53,6 @@ Youtube chanel: https://www.youtube.com/channel/UCj_yWYv_K-WJ4PARgEzP07Q
 </br>
 # Book
 </br>
-<img src="https://raw.githubusercontent.com/adegard/tagui_scripts/master/20180529214753.png"  align="center">
+<img src="https://raw.githubusercontent.com/adegard/tagui_scripts/master/DesignCap.jpg"  align="center">
 </br>
 On Amazon: http://amzn.eu/7Dw5NdF (italian)
