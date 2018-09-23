@@ -54,5 +54,6 @@ Youtube chanel: https://www.youtube.com/channel/UCj_yWYv_K-WJ4PARgEzP07Q
 # Book
 
 </br>
-Web Robots: Boost your business with Robotic Process Automation and Web-Scraping on Web-marketing : http://amzn.eu/hzqJYFT
-Web Robots: Révolutionne ton business avec la Robotic Process Automation et le Web-Scraping appliqués au Web-marketing : http://amzn.eu/3PDdLN1
+EN: Web Robots: Boost your business with Robotic Process Automation and Web-Scraping on Web-marketing : http://amzn.eu/hzqJYFT
+FR: Web Robots: Révolutionne ton business avec la Robotic Process Automation et le Web-Scraping appliqués au Web-marketing : http://amzn.eu/3PDdLN1
+IT: L'era dei Web-Bots: Rivoluziona il tuo business con la Robotic Process Automation e Web-Scraping applicati al Web-marketing : http://amzn.eu/8MulJzG
