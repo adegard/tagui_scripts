@@ -54,4 +54,5 @@ Youtube chanel: https://www.youtube.com/channel/UCj_yWYv_K-WJ4PARgEzP07Q
 # Book
 
 </br>
-<iframe type="text/html" width="336" height="550" frameborder="0" allowfullscreen style="max-width:100%" src="https://leggi.amazon.it/kp/card?asin=B07HKT13KC&preview=inline&linkCode=kpe&ref_=cm_sw_r_kb_dp_kP2PBbD02HRQ0" ></iframe>
+Web Robots: Boost your business with Robotic Process Automation and Web-Scraping on Web-marketing : http://amzn.eu/hzqJYFT
+Web Robots: Révolutionne ton business avec la Robotic Process Automation et le Web-Scraping appliqués au Web-marketing : http://amzn.eu/3PDdLN1
