@@ -52,8 +52,6 @@ Youtube chanel: https://www.youtube.com/channel/UCj_yWYv_K-WJ4PARgEzP07Q
 
 </br>
 # Book
-</br>
-<a href="http://amzn.eu/7Dw5NdF"><img src="https://raw.githubusercontent.com/adegard/tagui_scripts/master/DesignCap.jpg"  align="center" hight="300"></a> 
 
 </br>
-On Amazon: http://amzn.eu/7Dw5NdF (italian)
+<iframe type="text/html" width="336" height="550" frameborder="0" allowfullscreen style="max-width:100%" src="https://leggi.amazon.it/kp/card?asin=B07HKT13KC&preview=inline&linkCode=kpe&ref_=cm_sw_r_kb_dp_kP2PBbD02HRQ0" ></iframe>
