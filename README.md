@@ -52,4 +52,5 @@ Youtube chanel: https://www.youtube.com/channel/UCj_yWYv_K-WJ4PARgEzP07Q
 
 # Books
 
-Web Robots: Boost your business with Robotic Process Automation and Web-Scraping on Web-marketing : https://www.amazon.com/kindle-dbs/entity/author/B07HLM1TXY?_encoding=UTF8&node=283155&offset=0&pageSize=12&sort=author-pages-popularity-rank&page=1#formatSelectorHeader
+Web Robots: Boost your business with Robotic Process Automation and Web-Scraping on Web-marketing :
+https://www.amazon.com/Arnaud-Degardin/e/B07HLM1TXY/ref=sr_ntt_srch_lnk_3?qid=1537947864&sr=8-3
