@@ -50,10 +50,6 @@ Source (ahk file):
 Blog: https://simplestipsandtricks.blogspot.com/
 Youtube chanel: https://www.youtube.com/channel/UCj_yWYv_K-WJ4PARgEzP07Q
 
-# Book
+# Books
 
-EN: Web Robots: Boost your business with Robotic Process Automation and Web-Scraping on Web-marketing : http://amzn.eu/hzqJYFT
-</br>
-FR: Web Robots: Révolutionne ton business avec la Robotic Process Automation et le Web-Scraping appliqués au Web-marketing : http://amzn.eu/3PDdLN1
-</br>
-IT: L'era dei Web-Bots: Rivoluziona il tuo business con la Robotic Process Automation e Web-Scraping applicati al Web-marketing : http://amzn.eu/8MulJzG
+Web Robots: Boost your business with Robotic Process Automation and Web-Scraping on Web-marketing : https://www.amazon.com/kindle-dbs/entity/author/B07HLM1TXY?_encoding=UTF8&node=283155&offset=0&pageSize=12&sort=author-pages-popularity-rank&page=1#formatSelectorHeader
