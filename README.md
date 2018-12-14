@@ -1,7 +1,7 @@
 <h1>TagUI Editor:  Tagui_Editor </h1>
 Easily run your TagUI scripts (Windows):
 </br>
-<img src="https://raw.githubusercontent.com/adegard/tagui_scripts/master/20180529214753.png"  align="center">
+<img src="https://raw.githubusercontent.com/adegard/tagui_scripts/master/TagUI_Editor.gif"  align="center">
 # Installation (Windows)
 
 Compiled (exe file):
