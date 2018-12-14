@@ -1,20 +1,18 @@
 <h1>TagUI Editor:  Tagui_Editor </h1>
 Easily run your TagUI scripts (Windows):
 </br>
-<img src="https://raw.githubusercontent.com/adegard/tagui_scripts/master/TagUI_Editor.gif"  align="center">
-# Installation (Windows)
 
-Compiled (exe file):
-(It uses a set of %windir%\system32\shell32.dll Windows Shell Common icons)
-
+<b>Compiled (exe file)</b>:
 - save and run <a href="https://github.com/adegard/tagui_scripts/raw/master/TagUI_Editor.exe">TagUI_Editor.exe (x32)</a> 
 or <a href="https://github.com/adegard/tagui_scripts/raw/master/TagUI_Editor_x64.exe">TagUI_Editor_x64.exe</a> 
 - If Windows gives a security warning : choose to continue.
 
-Source file (ahk file):
+<b>Source file (ahk file)</b>:
 - Install AutoHotKey : https://autohotkey.com/
 - save and launch <a href="https://github.com/adegard/tagui_scripts/raw/master/TagUI_Editor.ahk">TagUI_Editor.ahk</a> 
 
+
+<img src="https://raw.githubusercontent.com/adegard/tagui_scripts/master/TagUI_Editor.gif"  align="center">
 
 
 <h1>TagUI Code Writer:  Tagui-Writer1.0x </h1>
