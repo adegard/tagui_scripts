@@ -1,5 +1,5 @@
 <h1>TagUI Editor:  Tagui_Editor </h1>
-Easily run your TagUI scripts (Windows):
+Easily run your TagUI scripts on Windows. Get TagUI here: https://github.com/kelaberetiv/TagUI
 </br>
 
 <b>Compiled (exe file)</b>:
