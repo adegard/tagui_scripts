@@ -28,7 +28,7 @@ TagUI (reference: https://github.com/kelaberetiv/TagUI) is very powerful program
 Compiled (exe file):
 (It uses a set of %windir%\system32\shell32.dll Windows Shell Common icons)
 
-- save and run https://github.com/adegard/tagui_scripts/blob/master/Tagui-Writer1.02.exe
+- save and run <a href="https://github.com/adegard/tagui_scripts/raw/master/Tagui-Writer1.02.exe">Tagui-Writer1.02.exe</a>
 - If Windows gives a security warning : choose to continue.
 - Open Editor of your choice (Notepad++ is great)
 - <b>Ctrl+left Click to show Menu</b> and insert code
@@ -36,7 +36,7 @@ Compiled (exe file):
 Source file (ahk file):
 - Install AutoHotKey : https://autohotkey.com/
 - Open Editor of your choice (Notepad++ is great)
-- save and launch https://github.com/adegard/tagui_scripts/blob/master/Tagui-Writer1.02.ahk
+- save and launch <a href="https://github.com/adegard/tagui_scripts/raw/master/Tagui-Writer1.03.ahk">Tagui-Writer1.03.ahk</a>
 - <b>Ctrl+left Click to show Menu</b> and insert code
 
 # Uninstall
