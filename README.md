@@ -1,5 +1,6 @@
 <h1>TagUI Editor:  Tagui_Editor </h1>
 Easily run your TagUI scripts on Windows. Get TagUI here: https://github.com/kelaberetiv/TagUI
+See before, this Tutorial How to Install TagUI: https://www.youtube.com/watch?v=winFtZ39YSQ
 </br>
 
 <b>Compiled (exe file)</b>:
