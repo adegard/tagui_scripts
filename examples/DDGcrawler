@@ -1,0 +1,97 @@
+http://www.comuni-italiani.it/province.html
+
+wait 2
+
+element_identifier_prov='body > span:nth-child(8) > table:nth-child(3) > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(INDEX) > td:nth-child(2) > b > a';
+
+//loop for with some element substitution
+for i from 2 to 100
+{
+element_sel_prov = element_identifier_prov.replace("INDEX", i);
+
+	if present(element_sel_prov)
+	{
+		read '+element_sel_prov+' to provincia
+
+		keywords='ospedale+'+provincia+'+contatti';
+		echo 'keywords '+keywords
+		https://duckduckgo.com/?q='+keywords+'
+
+		wait 2
+
+		element_identifier='#r1-INDEX .result__title';
+
+		//loop for with some element substitution
+		for i from 0 to 15
+		{
+		element_sel = element_identifier.replace("INDEX", i);
+
+			if present(element_sel)
+			{
+					click '+element_sel+'
+					wait 2
+					mylink= url();
+					echo 'mylink: ' mylink
+
+				//scrap email
+				if text() contains '@' 
+				{
+				echo "symbol @ found"	
+				strn = text();
+				//ini=strn.indexOf("@",0);
+				//echo 'ini: '+ini
+				//startn= strn.LastIndexOf(" ", ini);
+				startn = strn.slice(0, strn.indexOf("@")).lastIndexOf(" "); //get the last occurrence of a string before "@", 
+				echo "startn= " + startn
+
+				endn = strn.indexOf(".",startn+3);
+				echo "endn= " + endn
+
+				//extract some characters from a string
+					if strn.substring(startn, endn+1)=='i'
+					{	
+					email = strn.substring(startn, endn+3);	
+					}
+					else
+					{	
+					email = strn.substring(startn, endn+4);
+					}
+				echo "email= " + email
+				
+				
+						//path of file to create/use
+						//this file must exist:
+						path="/tmp/emails_DDGcrawler.csv";
+
+						fs = require('fs');if (!fs.exists(path))  fs.write(path, 'Name list \n', 'w');
+
+						load '+path+' to database_emails
+						//echo 'database_emails: '+database_emails
+
+						if (database_emails.indexOf(email)>-1)
+						{
+						echo 'email already exist in database'
+						}
+						else
+						{
+						echo 'email added in database'
+						write email to '+path+'
+							//entering answer:
+							//use email api
+
+						
+						}
+
+				
+				}
+
+					
+			}
+			https://duckduckgo.com/?q='+keywords+'
+			wait 3
+		}
+
+	}
+http://www.comuni-italiani.it/province.html
+wait 1
+}
