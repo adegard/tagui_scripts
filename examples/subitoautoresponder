@@ -1,0 +1,78 @@
+https://www.subito.it/annunci-italia/vendita/offerte-lavoro/?qso=false&q=badante
+	wait 5
+	
+	element_identifier = '#template_content > main > div.subcontent > div.main > div.listing > ul.items_listing > li:nth-child(INDEX) > article > div > div.item_list_section.item_description > h2 > a'
+	
+
+for i from 3 to 10
+{
+	URLSelector = element_identifier.replace("INDEX", i);
+        if present(URLSelector)
+		{
+			click '+URLSelector+'
+			wait 2
+			read #annuncio > header > div.title > h1 to title
+			
+			if present('#ad_details > div.summary > table > tbody > tr:nth-child(1) > td.details_label')
+			{
+			read #ad_details > div.summary > table > tbody > tr:nth-child(1) > td.details_label to label
+			}
+			else
+			{ 
+			label='';
+			}
+
+			if present('#ad_details > div.summary > table > tbody > tr:nth-child(1) > td.details_value')
+			{ 
+			read #ad_details > div.summary > table > tbody > tr:nth-child(1) > td.details_value to city
+			}
+			else
+			{ 
+			city='';
+			}
+
+			read #ad_details > div.description to testo
+			read #user_info_container > div.content_box > div.publisher_info > h2 to name
+			read #annuncio > header > div.profile > div > div.data to type
+			//return url in command
+			mylink= url();
+			echo 'title: ' title
+
+ 
+
+				//return text in command
+				echo 'testo: ' testo
+				echo 'city: ' city
+				echo 'name: ' name
+				echo 'type: ' type
+				echo 'mylink: ' mylink
+
+
+				//SEND SMS to writer
+				//control presence of button tel number
+				if present('#desktop-actions-container > div > div.desktop-show-phone-number > div.phone-label > div.button-container.secondary')
+				{
+				click #desktop-actions-container > div > div.desktop-show-phone-number > div.phone-label > div.button-container.secondary
+
+				read #desktop-actions-container > div > div.desktop-show-phone-number > div.small_dialog_wrapper.show > div > div.smd_body > div > div > div.phone-number to tel
+
+
+				echo tel
+				
+				// send SMS throught Skebby SMS Gateway 
+				// SEE TO INSTALL: https://github.com/adegard/SMS-Marketing
+				// in the following row: update with your server path and APIKEY:
+				
+				//https://www.***myserver***.com/sendsmsapi.php?APIKEY=***APIKEYNUMBER***&SENDNAME='+name+'&TEL='+tel+'
+				
+				snap page
+				}
+
+				wait 2				
+
+			
+			https://www.subito.it/annunci-italia/vendita/offerte-lavoro/?qso=false&q=badante
+			wait 2
+		}
+			
+}
