@@ -1,5 +1,5 @@
-<h1>TagUI Editor:  Tagui code Editor, Execution and Schedule for Windows </h1>
-Easily run your TagUI scripts on Windows. Get TagUI here: https://github.com/kelaberetiv/TagUI
+<h1>TagUI Editor:  </h1>
+Easily <b>modify, run and schedule</b> your TagUI scripts on Windows. Get TagUI here: https://github.com/kelaberetiv/TagUI
 See before, this Tutorial How to Install TagUI: https://www.youtube.com/watch?v=winFtZ39YSQ
 </br>
 
