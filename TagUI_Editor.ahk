@@ -3,7 +3,7 @@
 
 
 ;DOWNLOAD 'TagUI' form: https://github.com/kelaberetiv/TagUI
-;thanks to @Ken Soh and his team of IA Singapor!
+;thanks to @Ken Soh and his team of AI Singapor!
 
 #SingleInstance Force
 #NoEnv
@@ -23,6 +23,7 @@ Menu, HelpMenu, Add, &About, HelpAbout
 Menu, Execute, Add, &Chrome Visible, Execute_chrome_visible
 Menu, Execute, Add, &Chrome Headless, Execute_chrome_headless
 Menu, Execute, Add, &Firefox, Execute_firefox_visible
+Menu, Schedule, Add, &Schedule Daily, ScheduleDaily
 ;************************INSERT FUNCTIONS******************************************
 ;***********Navigate Webpage******************* 
 ;****************************** 
@@ -191,7 +192,8 @@ Menu, MyMenuBar, Add, &Execute, :Execute
 Menu, MyMenuBar,Icon,&Execute, %A_WinDir%\system32\SHELL32.dll, 138 
 Menu, MyMenuBar, Add, &Open Log, Log
 Menu, MyMenuBar,Icon,&Open Log, %A_WinDir%\system32\SHELL32.dll, 166 
-
+Menu, MyMenuBar, Add, &Schedule, :Schedule
+Menu, MyMenuBar,Icon,&Schedule, %A_WinDir%\system32\SHELL32.dll, 240 
 
 ; Attach the menu bar to the window:
 Gui, Menu, MyMenuBar
@@ -296,19 +298,21 @@ return
 
 Execute_chrome_visible:
     launchTagUI(CurrentFileName, "chrome")
+    WinWait, ahk_exe cmd.exe
+    WinMove, ahk_exe cmd.exe ,,(A_ScreenWidth)-(600) ,(A_ScreenHeight)-(400) , 600, 400
 return
 
 Execute_chrome_headless:
     launchTagUI(CurrentFileName, "")
     WinWait, ahk_exe cmd.exe
     WinMove, ahk_exe cmd.exe ,,(A_ScreenWidth)-(600) ,(A_ScreenHeight)-(400) , 600, 400
-    ;WinGetPos, ahk_exe cmd.exe,, Width, Height
-    ;WinMove, ahk_exe cmd.exe,, (A_ScreenWidth)-(200), (A_ScreenHeight)-(200)
 return
 
 
 Execute_firefox_visible:
     launchTagUI(CurrentFileName, "firefox")
+    WinWait, ahk_exe cmd.exe
+    WinMove, ahk_exe cmd.exe ,,(A_ScreenWidth)-(600) ,(A_ScreenHeight)-(400) , 600, 400
 return
 
 
@@ -316,6 +320,80 @@ Log:
     run, %CurrentFileName%.log
 return
 
+
+ScheduleDaily:
+    Gui 2:Add, Text, x19 y9 w139 h23 +0x200, Add Daily Task:
+    Gui 2:Add, Text, x16 y43 w120 h23 +0x200, Task Name:
+    Gui 2:Add, Edit, vthistaskname x16 y71 w399 h21, My task
+    Gui 2:Add, Text, x16 y99 w120 h23 +0x200, Batch File (.bat) Path:
+    Gui 2:Add, Edit, vfile x16 y129 w335 h21 
+    Gui 2:Add, Button, x354 y129 w70 h21 gBROWSE, BROWSE
+    Gui 2:Add, DateTime, vtime x15 y156 w120 h23   1, HH:mm
+    Gui 2:Add, Button, x15 y233 w80 h23 gAddTaskDaily, ADD TASK
+    Gui 2:Add, Button, x261 y232 w153 h23 gOpenScheduler, OPEN TASK SCHEDULER
+    GuiControlGet , mFile,, Filenametext
+    ;MsgBox, %mFile%
+    GuiControl,2:, file, %mFile%.bat  
+    
+    Gui 2:Show, w426 h270, Tasks Scheduler Windows
+
+Return
+
+2AddTaskDaily:  
+2OpenScheduler:  
+2GuiClose:
+2GuiEscape:
+Gui, 1:-Disabled  ; Re-enable the main window (must be done prior to the next step).
+Gui, 2: Destroy  ; Destroy the about box.
+return
+
+
+
+BROWSE()
+{
+FileSelectFile, SelectedFile, 3, , Open a .bat file 
+GuiControl,2:, file, %SelectedFile%
+}
+
+
+AddTaskDaily:
+    GuiControlGet , sFile,, file
+    GuiControlGet , staskname,, thistaskname
+    GuiControlGet , stime,, time
+    FormatTime, stime, %stime%, HH:mm
+    sfrequency=DAILY
+    ;MsgBox,  SchTasks /Create /SC %sfrequency% /TN "%staskname%" /TR "%sfile%" /ST %stime%
+    SheduleTask(staskname, sFile, stime, sfrequency)
+return
+
+
+;**************************SCHEDULER WINDOWS*****************
+
+SheduleTask(mytaskname, file, time, frequency)
+{
+    CmdFile=ScheduleCmd.bat
+
+    batcontent=
+    (
+    @echo off
+
+    SchTasks /Create /SC %frequency% /TN "%mytaskname%" /TR "%file%" /ST %time%
+
+    pause
+    )
+
+    filedelete, %CmdFile%
+    FileAppend, %batcontent%, %CmdFile% 
+
+    run, %CmdFile% 
+
+}
+
+;**************************************************
+
+OpenScheduler:
+    run, control schedtasks
+return
 
 
 GuiSize:
@@ -335,7 +413,7 @@ GuiClose:  ; User closed the window.
 
 Esc::ExitApp
 
-;************TEST FUNCTION****************
+;************TagUI Editor FUNCTIONS****************
 
 
 launchTagUI(filetagui,  browser)
@@ -368,6 +446,8 @@ launchTagUI(filetagui,  browser)
 
     run, %BatFile%
 }
+
+
 
 ;*************************************************************************
 
