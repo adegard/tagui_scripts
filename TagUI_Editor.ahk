@@ -19,7 +19,8 @@ Menu, FileMenu, Add, &Save (Ctrl+S), FileSave
 Menu, FileMenu, Add, Save &As, FileSaveAs
 Menu, FileMenu, Add  ; Separator line.
 Menu, FileMenu, Add, &Exit, FileExit
-Menu, HelpMenu, Add, &About, HelpAbout
+Menu, HelpMenu, Add, &About TagUI, HelpAbout
+Menu, HelpMenu, Add, &About TagUI_Editor, TagUI_editor
 Menu, Execute, Add, &Chrome Visible, Execute_chrome_visible
 Menu, Execute, Add, &Chrome Headless, Execute_chrome_headless
 Menu, Execute, Add, &Firefox, Execute_firefox_visible
@@ -296,6 +297,10 @@ HelpAbout:
     run, https://github.com/kelaberetiv/TagUI
 return
 
+TagUI_editor:
+    run, https://github.com/adegard/tagui_scripts
+return
+
 Execute_chrome_visible:
     launchTagUI(CurrentFileName, "chrome")
     WinWait, ahk_exe cmd.exe
@@ -330,6 +335,7 @@ ScheduleDaily:
     Gui 2:Add, Button, x354 y129 w70 h21 gBROWSE, BROWSE
     Gui 2:Add, DateTime, vtime x15 y156 w120 h23   1, HH:mm
     Gui 2:Add, Button, x15 y233 w80 h23 gAddTaskDaily, ADD TASK
+    Gui 2:Add, Button, x117 y232 w85 h23 gcheckTasks, CHECK TASKS
     Gui 2:Add, Button, x261 y232 w153 h23 gOpenScheduler, OPEN TASK SCHEDULER
     GuiControlGet , mFile,, Filenametext
     ;MsgBox, %mFile%
@@ -371,24 +377,40 @@ return
 
 SheduleTask(mytaskname, file, time, frequency)
 {
-    CmdFile=ScheduleCmd.bat
 
-    batcontent=
-    (
-    @echo off
-
-    SchTasks /Create /SC %frequency% /TN "%mytaskname%" /TR "%file%" /ST %time%
-
-    pause
-    )
-
-    filedelete, %CmdFile%
-    FileAppend, %batcontent%, %CmdFile% 
-
-    run, %CmdFile% 
+DelTask=SCHTASKS.exe /Create /SC %frequency% /TN "%mytaskname%" /TR "%file%" /ST %time%
+Run,  %DelTask%
 
 }
 
+checkTasks:
+    MsgBox,% GetTaskInfos()
+return
+
+GetTaskInfos()
+{
+    objService := ComObjCreate("Schedule.Service")
+    objService.Connect()
+    rootFolder := objService.GetFolder("\")
+    taskCollection := rootFolder.GetTasks(0)
+    numberOfTasks := taskCollection.Count
+    ; ?RegistrationInfo.Author
+    For registeredTask, state in taskCollection
+    {
+        if (registeredTask.state == 0)
+            state:= "Unknown"
+        else if (registeredTask.state == 1)
+            state:= "Disabled"
+        else if (registeredTask.state == 2)
+            state:= "Queued"
+        else if (registeredTask.state == 3)
+            state:= "Ready"
+        else if (registeredTask.state == 4)
+            state:= "Running"
+        tasklist .= registeredTask.Name "=" state "`n" ; "=" registeredTask.state "`n"
+    }
+    return tasklist
+}
 ;**************************************************
 
 OpenScheduler:
@@ -420,6 +442,8 @@ launchTagUI(filetagui,  browser)
 {
       
 
+/*
+
     BatFile=%filetagui%.bat
         
     IfExist %BatFile%
@@ -432,11 +456,9 @@ launchTagUI(filetagui,  browser)
         }
     }
 
-
     batcontent=
     (
     @echo off
-
     tagui %filetagui% %browser%
 
     pause
@@ -445,6 +467,10 @@ launchTagUI(filetagui,  browser)
     FileAppend, %batcontent%, %BatFile%
 
     run, %BatFile%
+*/    
+DelTask=tagui.cmd "%filetagui%" %browser%
+Run,  %DelTask%
+
 }
 
 
