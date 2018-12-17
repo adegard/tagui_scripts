@@ -12,6 +12,8 @@ or <a href="https://github.com/adegard/tagui_scripts/raw/master/TagUI_Editor_x64
 - Install AutoHotKey : https://autohotkey.com/
 - save and launch <a href="https://github.com/adegard/tagui_scripts/raw/master/TagUI_Editor.ahk">TagUI_Editor.ahk</a> 
 
+<b>Known issue</b>:
+- put tagui files in folders without any spaces, like: C:\tagui\my_files\
 
 <img src="https://raw.githubusercontent.com/adegard/tagui_scripts/master/TagUI_Editor.gif"  align="center">
 
