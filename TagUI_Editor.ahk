@@ -327,6 +327,16 @@ return
 
 
 ScheduleDaily:
+
+    GuiControlGet , mFile,, Filenametext
+
+    If InStr(mFile, " ")
+    {
+        MsgBox, Path:%mFile% `n Phantomjs does not work with file paths that have spaces in them. Please Save it in other Path without spaces
+    }
+    else
+    {
+
     Gui 2:Add, Text, x19 y9 w139 h23 +0x200, Add Daily Task:
     Gui 2:Add, Text, x16 y43 w120 h23 +0x200, Task Name:
     Gui 2:Add, Edit, vthistaskname x16 y71 w399 h21, My task
@@ -337,11 +347,11 @@ ScheduleDaily:
     Gui 2:Add, Button, x15 y233 w80 h23 gAddTaskDaily, ADD TASK
     Gui 2:Add, Button, x117 y232 w85 h23 gcheckTasks, CHECK TASKS
     Gui 2:Add, Button, x261 y232 w153 h23 gOpenScheduler, OPEN TASK SCHEDULER
-    GuiControlGet , mFile,, Filenametext
     ;MsgBox, %mFile%
     GuiControl,2:, file, %mFile%.bat  
     
     Gui 2:Show, w426 h270, Tasks Scheduler Windows
+    }
 
 Return
 
@@ -363,6 +373,7 @@ GuiControl,2:, file, %SelectedFile%
 
 
 AddTaskDaily:
+    
     GuiControlGet , sFile,, file
     GuiControlGet , staskname,, thistaskname
     GuiControlGet , stime,, time
@@ -378,8 +389,8 @@ return
 SheduleTask(mytaskname, file, time, frequency)
 {
 
-DelTask=SCHTASKS.exe /Create /SC %frequency% /TN "%mytaskname%" /TR "%file%" /ST %time%
-Run,  %DelTask%
+        DelTask=SCHTASKS.exe /Create /SC %frequency% /TN "%mytaskname%" /TR "%file%" /ST %time%
+        Run,  %DelTask%
 
 }
 
@@ -440,36 +451,18 @@ Esc::ExitApp
 
 launchTagUI(filetagui,  browser)
 {
-      
-
-/*
-
-    BatFile=%filetagui%.bat
-        
-    IfExist %BatFile%
+          
+    If InStr(filetagui, " ")
     {
-        FileDelete %BatFile%
-        if ErrorLevel
-        {
-            MsgBox The attempt to overwrite "%BatFile%" failed.
-            return
-        }
+        MsgBox, Path:%mFile% `n Phantomjs does not work with file paths that have spaces in them. Please Save it in other Path without spaces
+    }
+    Else
+    {
+        DelTask=tagui.cmd "%filetagui%" %browser%
+        Run,  %DelTask%
     }
 
-    batcontent=
-    (
-    @echo off
-    tagui %filetagui% %browser%
 
-    pause
-    )
-
-    FileAppend, %batcontent%, %BatFile%
-
-    run, %BatFile%
-*/    
-DelTask=tagui.cmd "%filetagui%" %browser%
-Run,  %DelTask%
 
 }
 
