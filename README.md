@@ -4,7 +4,7 @@ See before, this Tutorial How to Install TagUI: https://www.youtube.com/watch?v=
 </br>
 
 <b>Installer (exe file)</b>:
-- save and run <a href="https://github.com/adegard/tagui_scripts/raw/master/Setup_TagUI_Editor.exe">Setup_TagUI_Editor.exe</a> 
+- Run <a href="https://github.com/adegard/tagui_scripts/raw/master/Setup_TagUI_Editor.exe">Setup_TagUI_Editor.exe</a> 
 
 <b>Source Code (ahk file)</b>:
 - Install AutoHotKey : https://autohotkey.com/
