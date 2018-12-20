@@ -3,12 +3,10 @@ Easily <b>modify, run and schedule</b> your TagUI scripts on Windows. Get TagUI 
 See before, this Tutorial How to Install TagUI: https://www.youtube.com/watch?v=winFtZ39YSQ
 </br>
 
-<b>Compiled (exe file)</b>:
-- save and run <a href="https://github.com/adegard/tagui_scripts/raw/master/TagUI_Editor.exe">TagUI_Editor.exe (x32)</a> 
-or <a href="https://github.com/adegard/tagui_scripts/raw/master/TagUI_Editor_x64.exe">TagUI_Editor_x64.exe</a> 
-- If Windows gives a security warning : choose to continue.
+<b>Installer (exe file)</b>:
+- save and run <a href="https://github.com/adegard/tagui_scripts/raw/master/Setup_TagUI_Editor.exe>Setup_TagUI_Editor.exe</a> 
 
-<b>Source file (ahk file)</b>:
+<b>Source Code (ahk file)</b>:
 - Install AutoHotKey : https://autohotkey.com/
 - save and launch <a href="https://github.com/adegard/tagui_scripts/raw/master/TagUI_Editor.ahk">TagUI_Editor.ahk</a> 
 
