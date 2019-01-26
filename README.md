@@ -13,14 +13,11 @@ See before, this Tutorial How to Install TagUI: https://www.youtube.com/watch?v=
 
 <b>Known issue</b>:
 - Folders name: put tagui files in folders without any spaces, like: C:\your-tagui-path\
-- If you launch Tagui files outside your tagui path, you need to set all comand in variable path environment: CasperJs, Sleimmerjs, PHP...
+- If you launch Tagui files outside your tagui path, you need to set all comand in variable path environment: CasperJs, Sleimmerjs, PHP...ie: if you path if C:\tagui\tagui:
+ PATH: C:\tagui\tagui\src,C:\tagui\tagui\src\phantomjs\bin, C:\tagui\tagui\src\casperjs\bin, C:\tagui\tagui\src\php
 (how to do that:
 https://1.bp.blogspot.com/-cWIWnmC0U84/WuLopuym3-I/AAAAAAAAWos/EF5V5punSGYCBhp9yuYo8k7l4Z7216WfACLcBGAs/s1600/varsistema.jpg)
 </br>
-ie: if you path if C:\tagui\tagui:
-
- PATH: C:\tagui\tagui\src,C:\tagui\tagui\src\phantomjs\bin, C:\tagui\tagui\src\casperjs\bin, C:\tagui\tagui\src\php
-
 
 <img src="https://raw.githubusercontent.com/adegard/tagui_scripts/master/TagUI_Editor.gif"  align="center">
 
