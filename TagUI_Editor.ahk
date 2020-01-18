@@ -302,12 +302,22 @@ TagUI_editor:
 return
 
 Execute_chrome_visible:
+
+if CurrentFileName =   ; No filename selected yet, so do Save-As instead.
+    Goto FileSaveAs
+Gosub SaveCurrentFile
+
     launchTagUI(CurrentFileName, "chrome")
     WinWait, ahk_exe cmd.exe
     WinMove, ahk_exe cmd.exe ,,(A_ScreenWidth)-(600) ,(A_ScreenHeight)-(400) , 600, 400
 return
 
 Execute_chrome_headless:
+
+if CurrentFileName =   ; No filename selected yet, so do Save-As instead.
+    Goto FileSaveAs
+Gosub SaveCurrentFile
+
     launchTagUI(CurrentFileName, "")
     WinWait, ahk_exe cmd.exe
     WinMove, ahk_exe cmd.exe ,,(A_ScreenWidth)-(600) ,(A_ScreenHeight)-(400) , 600, 400
@@ -315,6 +325,11 @@ return
 
 
 Execute_firefox_visible:
+
+if CurrentFileName =   ; No filename selected yet, so do Save-As instead.
+    Goto FileSaveAs
+Gosub SaveCurrentFile
+
     launchTagUI(CurrentFileName, "firefox")
     WinWait, ahk_exe cmd.exe
     WinMove, ahk_exe cmd.exe ,,(A_ScreenWidth)-(600) ,(A_ScreenHeight)-(400) , 600, 400
@@ -336,6 +351,30 @@ ScheduleDaily:
     }
     else
     {
+;create BAT FILE  *************************************
+
+    BatFile=%mFile%.bat
+    
+        
+    IfExist %BatFile%
+    {
+        FileDelete %BatFile%
+        if ErrorLevel
+        {
+            MsgBox The attempt to overwrite "%BatFile%" failed.
+            return
+        }
+    }
+
+
+	batcontent=
+	(
+	@echo off
+		tagui.cmd     "%mFile%" 
+	
+	)
+
+    FileAppend, %batcontent%, %BatFile%
 
     Gui 2:Add, Text, x19 y9 w139 h23 +0x200, Add Daily Task:
     Gui 2:Add, Text, x16 y43 w120 h23 +0x200, Task Name:
