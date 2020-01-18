@@ -4,7 +4,7 @@ See before, this Tutorial How to Install TagUI: https://www.youtube.com/watch?v=
 </br></br>
 
 <b>Installer</b>:
-- Run <a href="https://github.com/adegard/tagui_scripts/raw/master/TagUI_Editor.exe">TagUI_Editor.exe</a> or with Windows Installer: <a href="https://github.com/adegard/tagui_scripts/raw/master/setup_TagUI.exe">setup_TagUI.exe</a> 
+- Run <a href="https://github.com/adegard/tagui_scripts/raw/master/TagUI_Editor.exe">TagUI_Editor.exe</a>  
 - In Windows Warning, Continue and Yes
 
 <b>Source Code (ahk file)</b>:
