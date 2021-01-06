@@ -1,6 +1,6 @@
 <h1>TagUI Editor:  </h1>
 Easily <b>modify, run and schedule</b> your TagUI scripts on Windows. Get TagUI here: https://github.com/kelaberetiv/TagUI
-See before, this Tutorial How to Install TagUI: https://www.youtube.com/watch?v=winFtZ39YSQ
+See this Tutorial <a href="https://www.youtube.com/watch?v=winFtZ39YSQ" target="_blank">How to Install TagUI</a>
 </br></br>
 
 <b>Installer</b>:
@@ -16,8 +16,7 @@ See before, this Tutorial How to Install TagUI: https://www.youtube.com/watch?v=
 - Save your tagui files before execute them! (you can save it as yourname.tagui or without file extension)
 - If you launch Tagui files outside your tagui path, you need to set all comand in variable path environment: CasperJs, Sleimmerjs, PHP...ie: if you path is "C:\tagui\tagui":
  PATH: C:\tagui\tagui\src,C:\tagui\tagui\src\phantomjs\bin, C:\tagui\tagui\src\casperjs\bin, C:\tagui\tagui\src\php
-(how to do that:
-https://1.bp.blogspot.com/-cWIWnmC0U84/WuLopuym3-I/AAAAAAAAWos/EF5V5punSGYCBhp9yuYo8k7l4Z7216WfACLcBGAs/s1600/varsistema.jpg)
+(<a href="https://1.bp.blogspot.com/-cWIWnmC0U84/WuLopuym3-I/AAAAAAAAWos/EF5V5punSGYCBhp9yuYo8k7l4Z7216WfACLcBGAs/s1600/varsistema.jpg" target="_blank">how to do that</a>)
 </br>
 
 <img src="https://raw.githubusercontent.com/adegard/tagui_scripts/master/TagUI_Editor.gif"  align="center">
@@ -63,9 +62,11 @@ Source (ahk file):
 
 # Contributions
 Blog: https://simplestipsandtricks.blogspot.com/
-Youtube chanel: https://www.youtube.com/channel/UCj_yWYv_K-WJ4PARgEzP07Q
+
+<a href="https://www.youtube.com/channel/UCj_yWYv_K-WJ4PARgEzP07Q" target="_blank">Youtube chanel</a> 
 
 # Books
 
-Web Robots: Boost your business with Robotic Process Automation and Web-Scraping on Web-marketing :
+**Web Robots: Boost your business with Robotic Process Automation and Web-Scraping on Web-marketing** :
+![](https://images-na.ssl-images-amazon.com/images/i/7190amtcrvl.sr160,240_bg243,243,243.jpg)
 https://www.amazon.com/Arnaud-Degardin/e/B07HLM1TXY/ref=sr_ntt_srch_lnk_3?qid=1537947864&sr=8-3
