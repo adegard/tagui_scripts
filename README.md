@@ -61,7 +61,7 @@ Source (ahk file):
 - Press Printkey to start, to finish (red rectangle) and to save file (3 times)
 
 # Contributions
-Blog: https://simplestipsandtricks.blogspot.com/
+Blog: [https://simplestipsandtricks.blogspot.com/](https://simplestipsandtricks.blogspot.com/)
 
 <a href="https://www.youtube.com/channel/UCj_yWYv_K-WJ4PARgEzP07Q" target="_blank">Youtube chanel</a> 
 
