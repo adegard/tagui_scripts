@@ -64,7 +64,12 @@ Source (ahk file):
 Blog: [https://simplestipsandtricks.blogspot.com/](https://simplestipsandtricks.blogspot.com/)
 
 <a href="https://www.youtube.com/channel/UCj_yWYv_K-WJ4PARgEzP07Q" target="_blank">Youtube chanel</a> 
-
+</br>
+<form action="https://www.paypal.com/donate" method="post" target="_top">
+<input type="hidden" name="hosted_button_id" value="G9D2LAJQT7Q52" />
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+<img alt="" border="0" src="https://www.paypal.com/en_IT/i/scr/pixel.gif" width="1" height="1" />
+</form>
 # Books
 
 **Web Robots: Boost your business with Robotic Process Automation and Web-Scraping on Web-marketing** :
