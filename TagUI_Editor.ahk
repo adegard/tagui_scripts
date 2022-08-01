@@ -2,7 +2,7 @@
 ;Put this ahk script in the TagUI directory
 
 ;DOWNLOAD 'TagUI' form: https://github.com/kelaberetiv/TagUI
-;thanks to @Ken Soh and his team of AI Singapor!
+;thanks to @Ken Soh and his team of AI Singapore!
 
 #SingleInstance Force
 #NoEnv
