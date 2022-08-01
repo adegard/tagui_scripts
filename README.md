@@ -32,7 +32,6 @@ TagUI (reference: https://github.com/kelaberetiv/TagUI) is very powerful program
 
 # Installation (Windows)
 
-
 Source file (ahk file):
 - Install AutoHotKey : https://autohotkey.com/
 - Open Editor of your choice (Notepad++ is great)
@@ -41,7 +40,6 @@ Source file (ahk file):
 
 # Uninstall
 no need of uninstaller, just delete the file (close it before : left click and choose "Exit App") 
-
 
 <h1>ScreenShoter:  screenshoter.ahk </h1>
 Capture screen shots and save it directly in png file!
