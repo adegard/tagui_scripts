@@ -1,14 +1,12 @@
-﻿;@A.DEGARDIN 2018, TagUI_Editor.ahk : Create and test your TagUI scripts
-;Put this ahk scritp in the TagUI directory
-
+;@A.DEGARDIN 2018, TagUI_Editor.ahk : Create and test your TagUI scripts
+;Put this ahk script in the TagUI directory
 
 ;DOWNLOAD 'TagUI' form: https://github.com/kelaberetiv/TagUI
-;thanks to @Ken Soh and his team of AI Singapor!
+;thanks to @Ken Soh and his team of AI Singapore!
 
 #SingleInstance Force
 #NoEnv
 SetBatchLines -1
-
 
 SetWorkingDir, A_ScriptDir ; or specify TagUI directory C:\TagUI\tagui  
 
@@ -62,7 +60,7 @@ Menu,WebScraping_set,Add,Press Enter key in element,          WebScraping_presse
    Menu,Insert,Icon,Set,     %A_WinDir%\system32\shell32.dll,166
 
 
-   ;*************Scrap***************** 
+   ;*************Scrape***************** 
 Menu,WebScraping_get,Add,Check text presence,    					WebScraping_checktext
 Menu,WebScraping_get,Icon,Check text presence, %A_windir%\system32\shell32.dll,219 
 Menu,WebScraping_get,Add,Check element presence visible,    					WebScraping_checkelement
@@ -95,8 +93,8 @@ Menu,WebScraping_get,Icon,Scrap elements of table (loop), %A_windir%\system32\sh
 Menu,WebScraping_get,Add,Track time between events,    WebScraping_timer
 Menu,WebScraping_get,Icon,Track time between events, %A_windir%\system32\shell32.dll,240  
 
-	Menu,Insert,Add,Scrap, :WebScraping_get ;*********** ******************* 
-   Menu,Insert,Icon,Scrap,     %A_WinDir%\system32\shell32.dll,219
+	Menu,Insert,Add,Scrape, :WebScraping_get ;*********** ******************* 
+   Menu,Insert,Icon,Scrape,     %A_WinDir%\system32\shell32.dll,219
 
    ;*************File***************** 
 Menu,WebScraping_file,Add,Save element text to file,          WebScraping_save
@@ -180,21 +178,20 @@ Menu,WebScraping_js,Add,Calculate Random Value,    WebScraping_random
 	Menu, Insert,Add,Javascript, :WebScraping_js ;*********** ******************* 
    Menu,Insert,Icon,Javascript,     %A_WinDir%\system32\setupapi.dll,13
 
-
 ;*********************************************************************************
 
 Menu, MyMenuBar, Add, &File, :FileMenu
 Menu, MyMenuBar,Icon,&File, %A_WinDir%\system32\SHELL32.dll, 7 
 Menu, MyMenuBar, Add, &Insert, :Insert
 Menu, MyMenuBar,Icon,&Insert, %A_WinDir%\system32\SHELL32.dll, 123 
-Menu, MyMenuBar, Add, &Help, :HelpMenu
-Menu, MyMenuBar,Icon,&Help, %A_WinDir%\system32\SHELL32.dll, 155 
 Menu, MyMenuBar, Add, &Execute, :Execute
 Menu, MyMenuBar,Icon,&Execute, %A_WinDir%\system32\SHELL32.dll, 138 
 Menu, MyMenuBar, Add, &Open Log, Log
 Menu, MyMenuBar,Icon,&Open Log, %A_WinDir%\system32\SHELL32.dll, 166 
 Menu, MyMenuBar, Add, &Schedule, :Schedule
 Menu, MyMenuBar,Icon,&Schedule, %A_WinDir%\system32\SHELL32.dll, 240 
+Menu, MyMenuBar, Add, &Help, :HelpMenu
+Menu, MyMenuBar,Icon,&Help, %A_WinDir%\system32\SHELL32.dll, 155
 
 ; Attach the menu bar to the window:
 Gui, Menu, MyMenuBar
@@ -209,7 +206,6 @@ Gui Show, w552 h466, TagUI_Editor
 Return
 
 CurrentFileName =  ; Indicate that there is no current file.
-
 
 FileNew:
     GuiControl,, MainEdit  ; Clear the Edit control.
@@ -346,8 +342,7 @@ ScheduleDaily:
     GuiControlGet , mFile,, Filenametext
 
     If InStr(mFile, " ")
-    {
-        MsgBox, Path:%mFile% `n Phantomjs does not work with file paths that have spaces in them. Please Save it in other Path without spaces
+    {    MsgBox, Path:%mFile% `n Phantomjs does not work with file paths that have spaces in them. Please Save it in other Path without spaces
     }
     else
     {
@@ -401,7 +396,6 @@ Return
 Gui, 1:-Disabled  ; Re-enable the main window (must be done prior to the next step).
 Gui, 2: Destroy  ; Destroy the about box.
 return
-
 
 
 BROWSE()
