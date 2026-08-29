@@ -70,3 +70,7 @@ Blog: [https://simplestipsandtricks.blogspot.com/](https://simplestipsandtricks.
 **Web Robots: Boost your business with Robotic Process Automation and Web-Scraping on Web-marketing** :
 ![](https://images-na.ssl-images-amazon.com/images/i/7190amtcrvl.sr160,240_bg243,243,243.jpg)
 https://www.amazon.com/Arnaud-Degardin/e/B07HLM1TXY/ref=sr_ntt_srch_lnk_3?qid=1537947864&sr=8-3
+
+---
+
+For an overview of all my other projects, see https://adegard.github.io/blog/
